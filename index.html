@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Little Venture | Learning by Earning</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FFFFFF;
+        }
+        .mlv-purple { background-color: #8B5CF6; }
+        .mlv-orange { background-color: #F97316; }
+        .mlv-text-purple { color: #8B5CF6; }
+        .mlv-text-orange { color: #F97316; }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 40px -10px rgba(139, 92, 246, 0.12);
+        }
+        .btn-press:active {
+            transform: scale(0.96);
+        }
+        .tag-active {
+            background-color: #8B5CF6;
+            color: white;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .creator-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .creator-card:hover {
+            transform: translateY(-12px);
+        }
+    </style>
+</head>
+<body class="text-gray-900">
+
+    <!-- Navigation -->
+    <nav class="glass-nav sticky top-0 z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 shrink-0">
+                <img src="https://uat.mylittleventure.com/images/mlv-logo.svg" alt="My Little Venture" class="h-10 w-auto">
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center gap-8">
+                <div class="flex items-center gap-8 text-sm font-bold text-gray-500">
+                    <a href="#" class="hover:text-purple-600 transition-colors">About</a>
+                    <a href="#" class="hover:text-purple-600 transition-colors">Campaigns</a>
+                    <a href="#" class="hover:text-purple-600 transition-colors">Learning</a>
+                </div>
+                <div class="hidden lg:flex items-center bg-gray-50 border border-gray-200 rounded-full px-3 py-2 w-56 ml-6 transition-colors focus-within:border-purple-300 focus-within:bg-white group">
+                    <i data-lucide="search" class="w-4 h-4 text-gray-400 group-focus-within:text-purple-500 transition-colors"></i>
+                    <input type="text" placeholder="Search campaigns" class="bg-transparent border-none outline-none text-xs font-bold text-gray-600 placeholder-gray-400 ml-2 w-full">
+                </div>
+                <div class="flex items-center gap-3 sm:gap-5 ml-6">
+                    <button class="relative text-gray-500 hover:text-purple-600 transition-colors p-1">
+                        <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                        <span class="absolute top-0 right-0 w-2 h-2 bg-orange-500 rounded-full border border-white"></span>
+                    </button>
+                    <div class="h-6 w-px bg-gray-200 hidden sm:block"></div>
+                    <button class="hidden sm:block text-sm font-bold text-gray-700 hover:text-purple-600 btn-press transition-colors">Log In</button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-gray-500 hover:text-purple-600">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4">
+            <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">About</a>
+            <a href="campaigns.html" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Campaigns</a>
+            <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Learning</a>
+            <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Log In</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Purple Background Update -->
+    <header class="w-full bg-gradient-to-br from-purple-500 to-indigo-600 px-6 py-16 md:py-24 relative overflow-hidden">
+        <!-- Decorative background blurs -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+             <div class="absolute top-[-10%] right-[-5%] w-96 h-96 bg-purple-400/20 rounded-full blur-3xl"></div>
+             <div class="absolute bottom-[-10%] left-[-5%] w-96 h-96 bg-orange-400/20 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto text-center relative z-10">
+            <!-- Pill updated for dark background -->
+            <div class="inline-flex bg-white/10 border border-white/20 px-4 py-1.5 rounded-full mb-6 backdrop-blur-sm">
+                <span class="text-[10px] font-black text-white uppercase tracking-widest flex items-center gap-2">
+                    <i data-lucide="shield-check" class="w-3 h-3 text-orange-300"></i> Safe Platform for Kids
+                </span>
+            </div>
+            
+            <!-- Heading text updated to white -->
+            <h1 class="text-5xl md:text-7xl font-[900] tracking-tight mb-6 leading-[1.1] text-white">
+                Learning by <br class="hidden md:block">
+                <span class="text-orange-300">Earning.</span>
+            </h1>
+            
+            <!-- Subtitle updated to light purple/white -->
+            <p class="text-purple-100 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-medium leading-relaxed">
+                Launch a campaign, earn through hard work, and learn life-long money skills — all safely supervised by guardians.
+            </p>
+            
+            <!-- Buttons updated for purple context -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <!-- Updated button to use bg-orange-300 (matching Earning text) with dark purple text for contrast -->
+                <button class="w-full sm:w-auto bg-orange-300 text-purple-900 px-10 py-4 rounded-2xl font-black text-lg btn-press shadow-xl shadow-purple-900/20 hover:bg-orange-200 transition-colors">
+                    Start a Campaign
+                </button>
+                <button class="w-full sm:w-auto bg-transparent border-2 border-white text-white px-10 py-4 rounded-2xl font-black text-lg btn-press hover:bg-white/10 transition-colors">
+                    Support a Campaign
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Category Filters -->
+    <section class="max-w-7xl mx-auto px-6 mb-12 mt-12">
+        <div class="flex items-center gap-3 overflow-x-auto pb-4 no-scrollbar">
+            <button class="tag-active px-6 py-2.5 rounded-full text-sm font-bold whitespace-nowrap shadow-md cursor-pointer hover:shadow-lg transition-shadow">All Campaigns</button>
+            <button class="bg-gray-50 text-gray-500 px-6 py-2.5 rounded-full text-sm font-bold whitespace-nowrap hover:bg-gray-100 transition-colors cursor-pointer">🎁 Gifts & Toys</button>
+            <button class="bg-gray-50 text-gray-500 px-6 py-2.5 rounded-full text-sm font-bold whitespace-nowrap hover:bg-gray-100 transition-colors cursor-pointer">📚 Education</button>
+            <button class="bg-gray-50 text-gray-500 px-6 py-2.5 rounded-full text-sm font-bold whitespace-nowrap hover:bg-gray-100 transition-colors cursor-pointer">🎡 Experiences</button>
+            <button class="bg-gray-50 text-gray-500 px-6 py-2.5 rounded-full text-sm font-bold whitespace-nowrap hover:bg-gray-100 transition-colors cursor-pointer">💼 Business</button>
+            <button class="bg-gray-50 text-gray-500 px-6 py-2.5 rounded-full text-sm font-bold whitespace-nowrap hover:bg-gray-100 transition-colors cursor-pointer">🐾 Charity</button>
+            <button class="bg-gray-50 text-gray-500 px-6 py-2.5 rounded-full text-sm font-bold whitespace-nowrap hover:bg-gray-100 transition-colors cursor-pointer">👨‍👩‍👧‍👦 Team & Family</button>
+        </div>
+    </section>
+
+    <!-- Campaign Grid -->
+    <section class="max-w-7xl mx-auto px-6 mb-24">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Campaign Card 1 -->
+            <div class="bg-white rounded-[2.5rem] overflow-hidden card-shadow border border-gray-100 flex flex-col group hover:-translate-y-1 transition-all duration-300">
+                <div class="relative aspect-[4/3] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1513384312027-9fa69a360337?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Legoland">
+                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full shadow-sm">
+                        <span class="text-[10px] font-black text-purple-600 uppercase">Gifts & Toys</span>
+                    </div>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <div class="flex items-center gap-2 mb-3">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" class="w-6 h-6 rounded-full bg-purple-50" alt="Felix">
+                        <span class="text-xs font-bold text-gray-400">by Felix</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight">Visiting Legoland California Resort!</h3>
+                    
+                    <div class="mt-auto space-y-4">
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-end">
+                                <span class="text-sm font-black text-gray-900">$45.00 <span class="text-gray-400 font-bold">of $100</span></span>
+                                <span class="text-xs font-black mlv-text-purple">45%</span>
+                            </div>
+                            <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                                <div class="h-full mlv-purple rounded-full" style="width: 45%"></div>
+                            </div>
+                        </div>
+                        <button class="w-full py-3 bg-purple-50 text-purple-600 rounded-2xl font-bold text-sm btn-press group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                            Support Campaign
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Campaign Card 2 -->
+            <div class="bg-white rounded-[2.5rem] overflow-hidden card-shadow border border-gray-100 flex flex-col group hover:-translate-y-1 transition-all duration-300">
+                <div class="relative aspect-[4/3] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Supplies">
+                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full shadow-sm">
+                        <span class="text-[10px] font-black text-purple-600 uppercase">Education</span>
+                    </div>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <div class="flex items-center gap-2 mb-3">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Emily" class="w-6 h-6 rounded-full bg-purple-50" alt="Emily">
+                        <span class="text-xs font-bold text-gray-400">by Emily</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight">School supplies for new school year</h3>
+                    
+                    <div class="mt-auto space-y-4">
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-end">
+                                <span class="text-sm font-black text-gray-900">$75.00 <span class="text-gray-400 font-bold">of $100</span></span>
+                                <span class="text-xs font-black mlv-text-purple">75%</span>
+                            </div>
+                            <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                                <div class="h-full mlv-purple rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <button class="w-full py-3 bg-purple-50 text-purple-600 rounded-2xl font-bold text-sm btn-press group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                            Support Campaign
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Campaign Card 3 -->
+            <div class="bg-white rounded-[2.5rem] overflow-hidden card-shadow border border-gray-100 flex flex-col group hover:-translate-y-1 transition-all duration-300">
+                <div class="relative aspect-[4/3] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Shelter">
+                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full shadow-sm">
+                        <span class="text-[10px] font-black text-purple-600 uppercase">Charity</span>
+                    </div>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <div class="flex items-center gap-2 mb-3">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Bowie" class="w-6 h-6 rounded-full bg-purple-50" alt="Bowie">
+                        <span class="text-xs font-bold text-gray-400">by Bowie</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight">Help our local animal shelter</h3>
+                    
+                    <div class="mt-auto space-y-4">
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-end">
+                                <span class="text-sm font-black text-gray-900">$120.00 <span class="text-gray-400 font-bold">of $200</span></span>
+                                <span class="text-xs font-black mlv-text-purple">60%</span>
+                            </div>
+                            <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                                <div class="h-full mlv-purple rounded-full" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        <button class="w-full py-3 bg-purple-50 text-purple-600 rounded-2xl font-bold text-sm btn-press group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                            Support Campaign
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Meet Our Kid Creators -->
+    <section class="max-w-7xl mx-auto px-6 mb-24">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+            <div class="max-w-xl">
+                <div class="inline-flex items-center gap-2 text-purple-600 font-black text-[10px] uppercase tracking-[0.2em] mb-3">
+                    <span class="w-8 h-[2px] bg-purple-600 rounded-full"></span> Future Leaders
+                </div>
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 tracking-tight leading-tight">Meet our kid creators</h2>
+                <p class="text-gray-500 font-medium mt-4 text-lg">From creative artists to tech whizzes, discover the kids turning their passions into ventures.</p>
+            </div>
+            <button class="hidden md:flex items-center gap-2 text-sm font-bold mlv-text-purple hover:underline">
+                View all creators <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Creator 1 -->
+            <div class="creator-card bg-white rounded-[3rem] p-8 border border-gray-100 card-shadow flex flex-col items-center relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-purple-50 rounded-bl-[4rem] transition-all group-hover:w-full group-hover:h-full group-hover:rounded-none z-0"></div>
+                
+                <div class="relative z-10 flex flex-col items-center">
+                    <div class="w-32 h-32 mb-6 relative">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex&mouth=smile" class="w-full h-full rounded-full border-4 border-white shadow-xl" alt="Felix">
+                        <div class="absolute -bottom-2 right-2 bg-emerald-500 text-white p-2 rounded-2xl shadow-lg border-2 border-white">
+                            <i data-lucide="check" class="w-3 h-3"></i>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-2xl font-black text-gray-900 mb-4">Felix</h3>
+                    
+                    <p class="text-sm text-gray-500 text-center leading-relaxed mb-4">"I'm raising money to see the master builders in CA. I love creating new worlds!"</p>
+                </div>
+            </div>
+
+            <!-- Creator 2 -->
+            <div class="creator-card bg-white rounded-[3rem] p-8 border border-gray-100 card-shadow flex flex-col items-center relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-orange-50 rounded-bl-[4rem] transition-all group-hover:w-full group-hover:h-full group-hover:rounded-none z-0"></div>
+                
+                <div class="relative z-10 flex flex-col items-center">
+                    <div class="w-32 h-32 mb-6 relative">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Emily" class="w-full h-full rounded-full border-4 border-white shadow-xl" alt="Emily">
+                        <div class="absolute -bottom-2 right-2 bg-emerald-500 text-white p-2 rounded-2xl shadow-lg border-2 border-white">
+                            <i data-lucide="check" class="w-3 h-3"></i>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-2xl font-black text-gray-900 mb-4">Emily</h3>
+                    
+                    <p class="text-sm text-gray-500 text-center leading-relaxed mb-4">"My cards help me earn my own school supplies. It feels so good to work for them!"</p>
+                </div>
+            </div>
+
+            <!-- Creator 3 -->
+            <div class="creator-card bg-white rounded-[3rem] p-8 border border-gray-100 card-shadow flex flex-col items-center relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-50 rounded-bl-[4rem] transition-all group-hover:w-full group-hover:h-full group-hover:rounded-none z-0"></div>
+                
+                <div class="relative z-10 flex flex-col items-center">
+                    <div class="w-32 h-32 mb-6 relative">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Bowie" class="w-full h-full rounded-full border-4 border-white shadow-xl" alt="Bowie">
+                        <div class="absolute -bottom-2 right-2 bg-emerald-500 text-white p-2 rounded-2xl shadow-lg border-2 border-white">
+                            <i data-lucide="check" class="w-3 h-3"></i>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-2xl font-black text-gray-900 mb-4">Bowie</h3>
+                    
+                    <p class="text-sm text-gray-500 text-center leading-relaxed mb-4">"Helping our local shelter is my goal this year. Every $5 helps a puppy!"</p>
+                </div>
+            </div>
+
+            <!-- Creator 4 -->
+            <div class="creator-card bg-white rounded-[3rem] p-8 border border-gray-100 card-shadow flex flex-col items-center relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-[4rem] transition-all group-hover:w-full group-hover:h-full group-hover:rounded-none z-0"></div>
+                
+                <div class="relative z-10 flex flex-col items-center">
+                    <div class="w-32 h-32 mb-6 relative">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Maya" class="w-full h-full rounded-full border-4 border-white shadow-xl" alt="Maya">
+                        <div class="absolute -bottom-2 right-2 bg-emerald-500 text-white p-2 rounded-2xl shadow-lg border-2 border-white">
+                            <i data-lucide="check" class="w-3 h-3"></i>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-2xl font-black text-gray-900 mb-4">Maya</h3>
+                    
+                    <p class="text-sm text-gray-500 text-center leading-relaxed mb-4">"Sharing my music with the world to save for my first acoustic guitar."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Refer & Earn CTA -->
+    <section class="max-w-5xl mx-auto px-6 mb-24">
+        <div class="bg-gradient-to-br from-purple-500 to-indigo-600 rounded-[3rem] p-10 md:p-16 text-center text-white relative overflow-hidden shadow-2xl shadow-purple-200">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 blur-[80px] rounded-full"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-orange-400/20 blur-[80px] rounded-full"></div>
+            
+            <div class="relative z-10">
+                <div class="inline-block bg-white/20 backdrop-blur px-4 py-1.5 rounded-full mb-6 border border-white/20">
+                    <span class="text-[10px] font-black text-white uppercase tracking-widest">Share the joy</span>
+                </div>
+                <h2 class="text-3xl md:text-5xl font-black mb-6 tracking-tight">Refer a Friend, Earn <span class="text-orange-300 font-[900]">$5</span></h2>
+                <p class="text-purple-50 text-lg mb-10 max-w-lg mx-auto font-medium leading-relaxed">
+                    Invite another family to launch their first campaign and we'll add $5 to both your accounts!
+                </p>
+                <button class="bg-white text-purple-600 px-10 py-4 rounded-2xl font-black text-lg btn-press shadow-xl hover:bg-purple-50 transition-colors">
+                    Get My Referral Link
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety Section -->
+    <section class="max-w-7xl mx-auto px-6 mb-24 grid md:grid-cols-2 gap-12 items-center">
+        <div class="relative">
+            <div class="aspect-square bg-purple-50 rounded-[3rem] overflow-hidden card-shadow border border-white">
+                <img src="https://previewengine-accl.zohoexternal.com/image/WD/gsnhd7127134e96d24c028fda73ad5b0445c8?version=2.0&width=2046&height=1536" class="w-full h-full object-cover" alt="Safety">
+            </div>
+            <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-3xl shadow-2xl border border-gray-100 flex items-center gap-4">
+                <div class="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600">
+                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <p class="text-xs font-black text-gray-400 uppercase">Safety First</p>
+                    <p class="text-sm font-bold text-gray-900">Guardian Supervised</p>
+                </div>
+            </div>
+        </div>
+        <div class="space-y-6">
+            <h2 class="text-4xl font-black text-gray-900 leading-tight">Built for peace <br> of mind.</h2>
+            <p class="text-gray-500 font-medium text-lg leading-relaxed">
+                We believe in creativity, not risk. Every My Little Venture campaign is supervised by a verified guardian. No direct messaging between kids and strangers, and all earnings are managed by adults.
+            </p>
+            <ul class="space-y-4">
+                <li class="flex items-center gap-3 text-sm font-bold text-gray-700">
+                    <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500"></i> Identity Verification
+                </li>
+                <li class="flex items-center gap-3 text-sm font-bold text-gray-700">
+                    <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500"></i> Protected Privacy
+                </li>
+                <li class="flex items-center gap-3 text-sm font-bold text-gray-700">
+                    <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500"></i> Adult-Managed Funds
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- What Guardians Have to Say -->
+    <section class="max-w-7xl mx-auto px-6 mb-24">
+        <div class="bg-gray-50 rounded-[3rem] p-10 md:p-16 border border-gray-100 card-shadow">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-black text-gray-900 tracking-tight">What guardians have to say</h2>
+                <p class="text-gray-400 font-bold uppercase tracking-widest text-[10px] mt-4">Verified Testimonials</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-3xl card-shadow border border-gray-50 relative">
+                    <i data-lucide="quote" class="absolute top-6 right-8 text-purple-100 w-12 h-12"></i>
+                    <div class="flex gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-400 text-orange-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-400 text-orange-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-400 text-orange-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-400 text-orange-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-400 text-orange-400"></i>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed mb-6 font-medium">
+                        "The interface is so kid-friendly but the guardian controls are robust. My son Felix finally understands that money comes from effort, not just the ATM!"
+                    </p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-gray-50">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center font-bold text-purple-600">SM</div>
+                        <div>
+                            <p class="text-sm font-black text-gray-900">Sarah Miller</p>
+                            <p class="text-[10px] text-gray-400 font-bold uppercase">Guardian of Felix</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-3xl card-shadow border border-gray-50 relative">
+                    <i data-lucide="quote" class="absolute top-6 right-8 text-purple-100 w-12 h-12"></i>
+                    <div class="flex gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-400 text-orange-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-400 text-orange-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-400 text-orange-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-400 text-orange-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-400 text-orange-400"></i>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed mb-6 font-medium">
+                        "I was worried about privacy, but MLV's safety first approach convinced me. Emily's card business has been a hit with our family friends."
+                    </p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-gray-50">
+                        <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center font-bold text-orange-600">DT</div>
+                        <div>
+                            <p class="text-sm font-black text-gray-900">David Tan</p>
+                            <p class="text-[10px] text-gray-400 font-bold uppercase">Guardian of Emily</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-3xl card-shadow border border-gray-50 relative">
+                    <i data-lucide="quote" class="absolute top-6 right-8 text-purple-100 w-12 h-12"></i>
+                    <div class="flex gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-400 text-orange-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-400 text-orange-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-400 text-orange-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-400 text-orange-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-400 text-orange-400"></i>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed mb-6 font-medium">
+                        "Watching Bowie raise money for the animal shelter has been the highlight of our year. This platform makes teaching empathy and finance so easy."
+                    </p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-gray-50">
+                        <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center font-bold text-emerald-600">RK</div>
+                        <div>
+                            <p class="text-sm font-black text-gray-900">Rachel King</p>
+                            <p class="text-[10px] text-gray-400 font-bold uppercase">Guardian of Bowie</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t border-gray-200 py-16 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+            <!-- Footer Logo Replacement -->
+            <a href="#" class="flex items-center gap-2 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://uat.mylittleventure.com/images/mlv-logo.svg" alt="My Little Venture" class="h-10 w-auto">
+            </a>
+            
+            <div class="flex gap-8 text-sm font-bold text-gray-400">
+                <a href="#" class="hover:text-purple-600 transition-colors">Policy</a>
+                <a href="#" class="hover:text-purple-600 transition-colors">FAQ</a>
+                <a href="#" class="hover:text-purple-600 transition-colors">Contact</a>
+            </div>
+
+            <div class="flex gap-4">
+                <a href="#" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:text-blue-600 transition-colors shadow-sm" title="Facebook">
+                    <i data-lucide="facebook" class="w-5 h-5"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:text-pink-600 transition-colors shadow-sm" title="Instagram">
+                    <i data-lucide="instagram" class="w-5 h-5"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:text-black transition-colors shadow-sm" title="TikTok">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.68v13.67a2.4 2.4 0 0 1-2.4 2.4 2.4 2.4 0 0 1-2.4-2.4 2.4 2.4 0 0 1 2.4-2.4c.34 0 .67.03 1 .1V9.35a5.99 5.99 0 0 0-1-.08 6 6 0 0 0-6 6 6 6 0 0 0 6 6 6 6 0 0 0 6-6V8.34a7.97 7.97 0 0 0 4.77 1.52v-3.66a4.9 4.9 0 0 1-.77-.07z"/></svg>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:text-blue-700 transition-colors shadow-sm" title="LinkedIn">
+                    <i data-lucide="linkedin" class="w-5 h-5"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:text-red-600 transition-colors shadow-sm" title="YouTube">
+                    <i data-lucide="youtube" class="w-5 h-5"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:text-red-500 transition-colors shadow-sm" title="Pinterest">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12c0 2.21 1.79 4 4 4s4-1.79 4-4-1.79-4-4-4-4 1.79-4 4z" fill="white"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-10 text-center">
+            <p class="text-xs text-gray-400 font-medium">&copy; 2026 My Little Venture. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

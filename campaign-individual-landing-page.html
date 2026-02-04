@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Supplies | Emily's Venture</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F8F9FC;
+        }
+        .mlv-purple { background-color: #8B5CF6; }
+        .mlv-orange { background-color: #F97316; }
+        .mlv-text-purple { color: #8B5CF6; }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .card-shadow {
+            box-shadow: 0 4px 24px -2px rgba(139, 92, 246, 0.1);
+        }
+        .btn-press:active {
+            transform: scale(0.98);
+        }
+        .progress-glow {
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+        }
+        .badge-pulse {
+            animation: soft-pulse 2s infinite ease-in-out;
+        }
+        @keyframes soft-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Slideshow Styles */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Share Modal Styles */
+        #shareModal {
+            display: none;
+        }
+        #shareModal.active {
+            display: flex;
+        }
+
+        @media (min-width: 1024px) {
+            .sticky-sidebar {
+                position: sticky;
+                top: 100px;
+                max-height: calc(100vh - 120px);
+                overflow-y: auto;
+            }
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="pb-12">
+
+    <nav class="glass-nav sticky top-0 z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 shrink-0">
+                <img src="https://uat.mylittleventure.com/images/mlv-logo.svg" alt="My Little Venture" class="h-10 w-auto">
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center gap-8">
+                <div class="flex items-center gap-8 text-sm font-bold text-gray-500">
+                    <a href="#" class="hover:text-purple-600 transition-colors">About</a>
+                    <a href="#" class="hover:text-purple-600 transition-colors">Campaigns</a>
+                    <a href="#" class="hover:text-purple-600 transition-colors">Learning</a>
+                </div>
+                <div class="hidden lg:flex items-center bg-gray-50 border border-gray-200 rounded-full px-3 py-2 w-56 ml-6 transition-colors focus-within:border-purple-300 focus-within:bg-white group">
+                    <i data-lucide="search" class="w-4 h-4 text-gray-400 group-focus-within:text-purple-500 transition-colors"></i>
+                    <input type="text" placeholder="Search campaigns" class="bg-transparent border-none outline-none text-xs font-bold text-gray-600 placeholder-gray-400 ml-2 w-full">
+                </div>
+                <div class="flex items-center gap-3 sm:gap-5 ml-6">
+                    <button class="relative text-gray-500 hover:text-purple-600 transition-colors p-1">
+                        <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                        <span class="absolute top-0 right-0 w-2 h-2 bg-orange-500 rounded-full border border-white"></span>
+                    </button>
+                    <div class="h-6 w-px bg-gray-200 hidden sm:block"></div>
+                    <button class="hidden sm:block text-sm font-bold text-gray-700 hover:text-purple-600 btn-press transition-colors">Log In</button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-gray-500 hover:text-purple-600">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4">
+            <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">About</a>
+            <a href="campaigns.html" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Campaigns</a>
+            <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Learning</a>
+            <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Log In</a>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="lg:grid lg:grid-cols-12 lg:gap-12">
+            
+            <!-- Left Column: Media & Story -->
+            <div class="lg:col-span-8 space-y-8">
+                
+                <!-- Hero Image Showcase (Slideshow) -->
+                <div class="w-full aspect-[16/9] lg:aspect-[21/9] relative rounded-[2rem] overflow-hidden shadow-2xl group bg-gray-200">
+                    <div id="slideshow" class="slider-container">
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?q=80&w=1200&auto=format&fit=crop" 
+                                 alt="School Supplies Showcase"
+                                 onerror="this.src='https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1200&auto=format&fit=crop'">
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?q=80&w=1200&auto=format&fit=crop" 
+                                 alt="Hand-made holiday cards"
+                                 onerror="this.src='https://images.unsplash.com/photo-1534073828943-f801091bb18c?q=80&w=1200&auto=format&fit=crop'">
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=1200&auto=format&fit=crop" 
+                                 alt="Hand-made bracelets"
+                                 onerror="this.src='https://images.unsplash.com/photo-1576067727263-9ca20bea6624?q=80&w=1200&auto=format&fit=crop'">
+                        </div>
+                    </div>
+                    
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
+                    
+                    <div class="absolute inset-y-0 left-0 flex items-center px-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button onclick="prevSlide()" class="p-2 bg-white/20 hover:bg-white/40 backdrop-blur-md text-white rounded-full transition-colors">
+                            <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                    <div class="absolute inset-y-0 right-0 flex items-center px-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button onclick="nextSlide()" class="p-2 bg-white/20 hover:bg-white/40 backdrop-blur-md text-white rounded-full transition-colors">
+                            <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+
+                    <div class="absolute bottom-6 right-8 flex gap-2">
+                        <div class="dot w-2 h-2 rounded-full bg-white transition-all duration-300 shadow-sm" id="dot0"></div>
+                        <div class="dot w-2 h-2 rounded-full bg-white/40 transition-all duration-300 shadow-sm" id="dot1"></div>
+                        <div class="dot w-2 h-2 rounded-full bg-white/40 transition-all duration-300 shadow-sm" id="dot2"></div>
+                    </div>
+
+                    <div class="absolute bottom-6 left-8">
+                        <div class="flex gap-2 mb-3">
+                            <span class="bg-mlv-orange mlv-orange text-white text-[10px] md:text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-sm">Education</span>
+                            <span class="bg-white/20 backdrop-blur-md text-white text-[10px] md:text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">Public</span>
+                        </div>
+                        <h1 class="text-2xl md:text-4xl font-black text-white leading-tight drop-shadow-md">School supplies for new school year</h1>
+                    </div>
+                </div>
+
+                <!-- Profile Info (Mobile Visible) -->
+                <div class="flex items-center gap-4 lg:hidden p-4 bg-white rounded-3xl card-shadow">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Emily" class="w-12 h-12 rounded-full border-2 border-purple-50 shadow-sm" alt="Emily" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=fallback'">
+                    <div>
+                        <p class="text-xs text-purple-600 font-bold uppercase tracking-tight leading-none mb-1">Kid Creator</p>
+                        <h2 class="text-lg font-bold text-gray-900 leading-tight">Emily</h2>
+                    </div>
+                </div>
+
+                <!-- Stats Card (Mobile) -->
+                <div class="lg:hidden bg-white rounded-[2.5rem] p-8 card-shadow border border-purple-200">
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Campaign Progress</p>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-4xl font-black text-gray-900">$75.00</span>
+                                <span class="text-sm font-bold text-gray-400">earned of $100</span>
+                            </div>
+                        </div>
+
+                        <div class="w-full h-4 bg-gray-100 rounded-full overflow-hidden p-1 shadow-inner">
+                            <div class="h-full mlv-purple rounded-full progress-glow transition-all duration-1000" style="width: 75%"></div>
+                        </div>
+
+                        <!-- Achievements (Moved to below Progress Bar) -->
+                        <div class="space-y-3">
+                            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Achievements</p>
+                            <div class="flex gap-2">
+                                <div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 shadow-sm" title="First $10">
+                                    <i data-lucide="award" class="w-6 h-6"></i>
+                                </div>
+                                <div class="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600 shadow-sm" title="Community Choice">
+                                    <i data-lucide="star" class="w-6 h-6"></i>
+                                </div>
+                                <div class="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 shadow-sm badge-pulse" title="Goal Near!">
+                                    <i data-lucide="rocket" class="w-6 h-6"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between items-center bg-purple-50 p-4 rounded-2xl">
+                            <div class="flex-1 text-center">
+                                <p class="text-[10px] font-bold text-purple-400 uppercase mb-1">Goal Reached</p>
+                                <p class="text-lg font-black text-purple-700">75%</p>
+                            </div>
+                            <div class="w-px h-8 bg-purple-200"></div>
+                            <div class="flex-1 text-center">
+                                <p class="text-[10px] font-bold text-purple-400 uppercase mb-1">Supporters</p>
+                                <p class="text-lg font-black text-purple-700">12</p>
+                            </div>
+                        </div>
+
+                        <!-- Card Buttons -->
+                        <div class="grid grid-cols-2 gap-3">
+                            <button onclick="scrollToOfferings()" class="flex items-center justify-center gap-2 bg-mlv-purple mlv-purple text-white py-4 rounded-2xl font-bold shadow-lg shadow-purple-100 btn-press transition-colors hover:opacity-90">
+                                <i data-lucide="heart" class="w-5 h-5 fill-current"></i>
+                                Support
+                            </button>
+                            <button onclick="openShareModal()" class="flex items-center justify-center gap-2 bg-white border-2 border-purple-100 text-purple-600 py-4 rounded-2xl font-bold btn-press transition-colors hover:bg-purple-50">
+                                <i data-lucide="share-2" class="w-5 h-5"></i>
+                                Share
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Story -->
+                <div class="bg-white rounded-[2.5rem] p-8 card-shadow border border-white">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-1 h-6 mlv-purple rounded-full"></div>
+                        <h3 class="text-lg font-bold text-gray-900 uppercase tracking-widest">Campaign Statement</h3>
+                    </div>
+                    <div class="prose prose-purple max-w-none text-gray-600 leading-relaxed space-y-4">
+                        <p>Hello everyone! My name is Emily and I am so excited for the upcoming school year.</p>
+                        <p>I started this venture because I wanted to learn how money works. Instead of just asking my parents for supplies, I want to earn them by sharing my creativity with you! I've been practicing making holiday cards and braiding bracelets all summer.</p>
+                        <p>Every dollar I earn goes directly into my savings jar for my backpack, notebooks, and cool pens. Thank you for cheering me on and being part of my first business venture!</p>
+                    </div>
+                </div>
+
+                <!-- Offerings Section -->
+                <section id="offerings-section" class="space-y-6 scroll-mt-24">
+                    <div class="flex items-center gap-2 px-1 mb-2">
+                        <i data-lucide="sparkles" class="w-5 h-5 text-orange-400"></i>
+                        <h2 class="text-lg font-bold text-gray-900 uppercase tracking-widest">Offerings to Supporters</h2>
+                    </div>
+
+                    <div class="flex flex-col gap-6">
+                        <!-- Offering 1 -->
+                        <div class="bg-white rounded-[2.5rem] p-6 card-shadow border border-gray-50 flex flex-col group hover:border-purple-200 transition-all w-full">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-[10px] font-bold text-orange-500 bg-orange-50 px-3 py-1 rounded-full uppercase tracking-wider">Offering 1</span>
+                                <div class="bg-purple-50 text-purple-700 font-black px-4 py-1.5 rounded-2xl text-xl">$10.00</div>
+                            </div>
+                            <h4 class="font-bold text-gray-900 text-xl mb-2">Hand-made holiday card</h4>
+                            <p class="text-sm text-gray-500 mb-8 leading-relaxed flex-grow">
+                                As a thank you to your support, I'm making handmade cards as a token of appreciation. Each one is unique, hand-crafted with glitter, stickers, and lots of love.
+                            </p>
+                            <button class="w-full mlv-purple text-white py-4 rounded-2xl font-bold btn-press shadow-lg shadow-purple-100 flex items-center justify-center gap-2 transition-all">
+                                Select this offering
+                            </button>
+                        </div>
+
+                        <!-- Offering 2 -->
+                        <div class="bg-white rounded-[2.5rem] p-6 card-shadow border border-gray-50 flex flex-col group hover:border-purple-200 transition-all w-full">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-[10px] font-bold text-orange-500 bg-orange-50 px-3 py-1 rounded-full uppercase tracking-wider">Offering 2</span>
+                                <div class="bg-purple-50 text-purple-700 font-black px-4 py-1.5 rounded-2xl text-xl">$20.00</div>
+                            </div>
+                            <h4 class="font-bold text-gray-900 text-xl mb-2">Hand-made bracelet</h4>
+                            <p class="text-sm text-gray-500 mb-8 leading-relaxed flex-grow">
+                                As a thank you to your support, I'm making colorful bracelets as a token of appreciation! They are super cool, fully adjustable, and come in eye-catching patterns.
+                            </p>
+                            <button class="w-full mlv-purple text-white py-4 rounded-2xl font-bold btn-press shadow-lg shadow-purple-100 flex items-center justify-center gap-2 transition-all">
+                                Select this offering
+                            </button>
+                        </div>
+
+                        <!-- Cash Gift Offering -->
+                        <div class="bg-purple-50 rounded-[2.5rem] p-6 card-shadow border border-purple-100 flex flex-col group hover:border-purple-300 transition-all w-full">
+                            <div class="flex justify-between items-start mb-4">
+                                <h4 class="font-bold text-gray-900 text-xl">Cash Gift</h4>
+                                <div class="bg-purple-100 p-2 rounded-xl">
+                                    <i data-lucide="gift" class="w-5 h-5 text-purple-600"></i>
+                                </div>
+                            </div>
+                            <p class="text-sm text-purple-800/70 mb-8 leading-relaxed">
+                                You can also support my goal with any cash gift amount. All cash gifts will go towards my goal!
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <div class="relative flex-grow">
+                                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-purple-600 font-bold">$</span>
+                                    <input type="number" placeholder="Enter amount" class="w-full bg-white border-2 border-purple-100 rounded-2xl py-4 pl-8 pr-4 font-bold text-gray-900 focus:outline-none focus:border-purple-400 transition-colors shadow-sm">
+                                </div>
+                                <button class="bg-purple-600 text-white px-8 py-4 sm:py-0 rounded-2xl font-bold btn-press shadow-lg shadow-purple-100 hover:bg-purple-700 transition-all whitespace-nowrap">
+                                    Send Cash Gift
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Disclaimer -->
+                    <div class="bg-slate-100 rounded-3xl p-6 border border-slate-200 mt-8 shadow-sm">
+                        <div class="flex gap-4 items-start">
+                            <div class="bg-slate-200 p-2 rounded-xl">
+                                <i data-lucide="info" class="w-5 h-5 text-slate-600 shrink-0"></i>
+                            </div>
+                            <div class="text-[11px] md:text-xs text-slate-600 leading-relaxed">
+                                <span class="font-bold text-slate-900 block mb-1">Disclaimer to Supporters:</span> 
+                                Your contribution to this campaign is purely voluntary. Please note that "Offerings" represent Kid Creator's active working goals and tokens of gratitude for your support; they are <strong>not guaranteed</strong> or legally binding products provided by the child, their guardian, or the My Little Venture platform. Please consider this collaborative risk before supporting.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Column: Sidebar (Desktop Sticky) -->
+            <div class="lg:col-span-4 mt-12 lg:mt-0">
+                <div class="sticky-sidebar space-y-6">
+                    
+                    <!-- Creator Card (Desktop Only) -->
+                    <div class="hidden lg:flex bg-white rounded-3xl p-6 card-shadow items-center gap-4">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Emily" class="w-16 h-16 rounded-full border-4 border-purple-50 shadow-sm" alt="Emily" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=fallback'">
+                        <div>
+                            <p class="text-xs font-bold text-purple-400 uppercase tracking-tight">Kid Creator</p>
+                            <h2 class="text-2xl font-black text-gray-900">Emily</h2>
+                        </div>
+                    </div>
+
+                    <!-- Stats Card (Desktop Only) -->
+                    <div class="hidden lg:block bg-white rounded-[2.5rem] p-8 card-shadow border border-purple-200">
+                        <div class="space-y-6">
+                            <div>
+                                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Campaign Progress</p>
+                                <div class="flex items-baseline gap-2">
+                                    <span class="text-4xl font-black text-gray-900">$75.00</span>
+                                    <span class="text-sm font-bold text-gray-400">earned of $100</span>
+                                </div>
+                            </div>
+
+                            <div class="w-full h-4 bg-gray-100 rounded-full overflow-hidden p-1 shadow-inner">
+                                <div class="h-full mlv-purple rounded-full progress-glow transition-all duration-1000" style="width: 75%"></div>
+                            </div>
+
+                            <!-- Achievements (Moved to below Progress Bar) -->
+                            <div class="space-y-3">
+                                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Achievements</p>
+                                <div class="flex gap-2">
+                                    <div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 shadow-sm" title="First $10">
+                                        <i data-lucide="award" class="w-6 h-6"></i>
+                                    </div>
+                                    <div class="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600 shadow-sm" title="Community Choice">
+                                        <i data-lucide="star" class="w-6 h-6"></i>
+                                    </div>
+                                    <div class="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 shadow-sm badge-pulse" title="Goal Near!">
+                                        <i data-lucide="rocket" class="w-6 h-6"></i>
+                                    </div>
+                                    <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 shadow-sm" title="First Supporter">
+                                        <i data-lucide="gift" class="w-6 h-6"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between items-center bg-purple-50 p-4 rounded-2xl">
+                                <div class="flex-1 text-center">
+                                    <p class="text-[10px] font-bold text-purple-400 uppercase mb-1">Goal Reached</p>
+                                    <p class="text-lg font-black text-purple-700">75%</p>
+                                </div>
+                                <div class="w-px h-8 bg-purple-200"></div>
+                                <div class="flex-1 text-center">
+                                    <p class="text-[10px] font-bold text-purple-400 uppercase mb-1">Supporters</p>
+                                    <p class="text-lg font-black text-purple-700">12</p>
+                                </div>
+                            </div>
+
+                            <!-- Card Buttons -->
+                            <div class="grid grid-cols-2 gap-3">
+                                <button onclick="scrollToOfferings()" class="flex items-center justify-center gap-2 bg-mlv-purple mlv-purple text-white py-4 rounded-2xl font-bold shadow-lg shadow-purple-100 btn-press transition-colors hover:opacity-90">
+                                    <i data-lucide="heart" class="w-5 h-5 fill-current"></i>
+                                    Support
+                                </button>
+                                <button onclick="openShareModal()" class="flex items-center justify-center gap-2 bg-white border-2 border-purple-100 text-purple-600 py-4 rounded-2xl font-bold btn-press transition-colors hover:bg-purple-50">
+                                    <i data-lucide="share-2" class="w-5 h-5"></i>
+                                    Share
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Safety Check -->
+                    <div class="bg-emerald-50 border border-emerald-100 p-6 rounded-[2.5rem] flex gap-4 items-start shadow-sm">
+                        <div class="bg-emerald-100 p-2 rounded-xl shrink-0">
+                            <i data-lucide="shield-check" class="w-6 h-6 text-emerald-600"></i>
+                        </div>
+                        <div>
+                            <p class="text-emerald-900 font-bold text-xs uppercase tracking-widest mb-1">Guardian Supervised</p>
+                            <p class="text-emerald-700/80 text-[11px] leading-relaxed">
+                                Every step of Emily's venture is overseen by a verified adult.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Share Modal -->
+    <div id="shareModal" class="fixed inset-0 z-[100] items-center justify-center p-6 bg-black/40 backdrop-blur-sm transition-all">
+        <div class="bg-white w-full max-w-sm rounded-[2.5rem] p-8 card-shadow relative animate-in fade-in zoom-in duration-300">
+            <button onclick="closeShareModal()" class="absolute top-6 right-6 p-2 text-gray-400 hover:text-gray-600">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Share Emily's Venture</h3>
+            <p class="text-sm text-gray-500 mb-8 font-medium">Help Emily reach her goal by sharing her story with friends and family!</p>
+            
+            <div class="space-y-4">
+                <!-- Copy Link Option -->
+                <button onclick="copyCurrentUrl()" class="w-full flex items-center justify-between p-4 bg-gray-50 rounded-2xl border border-gray-100 hover:bg-gray-100 transition-colors btn-press">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-white p-2 rounded-xl shadow-sm"><i data-lucide="link" class="w-5 h-5 text-purple-600"></i></div>
+                        <span class="font-bold text-sm text-gray-700">Copy Link</span>
+                    </div>
+                    <span id="copyFeedback" class="text-[10px] font-black text-emerald-500 uppercase opacity-0 transition-opacity">Copied!</span>
+                </button>
+                
+                <!-- Email Option -->
+                <a href="mailto:?subject=Support%20Emily's%20Venture&body=Hi!%20Check%20out%20this%20cool%20campaign%20Emily%20started%20to%20earn%20her%20school%20supplies!" class="w-full flex items-center gap-3 p-4 bg-gray-50 rounded-2xl border border-gray-100 hover:bg-gray-100 transition-colors btn-press text-left">
+                    <div class="bg-white p-2 rounded-xl shadow-sm"><i data-lucide="mail" class="w-5 h-5 text-blue-500"></i></div>
+                    <span class="font-bold text-sm text-gray-700">Email</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (header && window.scrollY > 50) {
+                header.classList.add('shadow-md');
+            } else if (header) {
+                header.classList.remove('shadow-md');
+            }
+        });
+
+        // Navigation
+        function scrollToOfferings() {
+            document.getElementById('offerings-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Sharing Logic
+        function openShareModal() {
+            document.getElementById('shareModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeShareModal() {
+            document.getElementById('shareModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function copyCurrentUrl() {
+            const dummy = document.createElement('input');
+            const text = window.location.href;
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            
+            const feedback = document.getElementById('copyFeedback');
+            feedback.style.opacity = '1';
+            setTimeout(() => {
+                feedback.style.opacity = '0';
+            }, 2000);
+        }
+
+        // Close modal on click outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('shareModal');
+            if (event.target == modal) {
+                closeShareModal();
+            }
+        }
+
+        // Slideshow Logic
+        let currentSlide = 0;
+        const totalSlides = 3;
+        const slideshow = document.getElementById('slideshow');
+
+        function updateSlide() {
+            if (!slideshow) return;
+            slideshow.style.transform = `translateX(-${currentSlide * 100}%)`;
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.getElementById(`dot${i}`);
+                if (dot) {
+                    if (i === currentSlide) {
+                        dot.classList.replace('bg-white/40', 'bg-white');
+                        dot.classList.add('w-4');
+                    } else {
+                        dot.classList.replace('bg-white', 'bg-white/40');
+                        dot.classList.remove('w-4');
+                    }
+                }
+            }
+        }
+
+        window.nextSlide = function() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlide();
+        }
+
+        window.prevSlide = function() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlide();
+        }
+
+        const firstDot = document.getElementById('dot0');
+        if (firstDot) firstDot.classList.add('w-4');
+
+        setInterval(nextSlide, 5000);
+    </script>
+</body>
+</html>

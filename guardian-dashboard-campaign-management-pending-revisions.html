@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Revisions | My Little Venture</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F8F9FC;
+        }
+        .mlv-purple { background-color: #8B5CF6; }
+        .mlv-orange { background-color: #F97316; }
+        .mlv-text-purple { color: #8B5CF6; }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .card-shadow {
+            box-shadow: 0 4px 24px -2px rgba(139, 92, 246, 0.06);
+        }
+        .btn-press:a<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Revisions | My Little Venture</title>
+    <script src="https://cdn.tailwindcss.com">
+</script>
+    <script src="https://unpkg.com/lucide@latest">
+</script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F8F9FC;
+        }
+        .mlv-purple { background-color: #8B5CF6; }
+        .mlv-orange { background-color: #F97316; }
+        .mlv-text-purple { color: #8B5CF6; }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .card-shadow {
+            box-shadow: 0 4px 20px -2px rgba(139, 92, 246, 0.08);
+        }
+        .btn-press:active {
+            transform: scale(0.98);
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(.33); }
+            80%, 100% { opacity: 0; }
+        }
+        @keyframes pulse-dot {
+            0% { transform: scale(.8); }
+            50% { transform: scale(1); }
+            100% { transform: scale(.8); }
+        }
+        .pulse-indicator {
+            position: relative;
+            width: 8px;
+            height: 8px;
+        }
+        .pulse-indicator::before {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 300%;
+            height: 300%;
+            box-sizing: border-box;
+            margin-left: -100%;
+            margin-top: -100%;
+            border-radius: 45px;
+            background-color: #8B5CF6;
+            animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        .pulse-indicator::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-color: #8B5CF6;
+            border-radius: 15px;
+            animation: pulse-dot 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite;
+        }
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="glass-nav sticky top-0 z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 shrink-0">
+                <img src="https://uat.mylittleventure.com/images/mlv-logo.svg" alt="My Little Venture" class="h-10 w-auto">
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center gap-8">
+                <div class="flex items-center gap-8 text-sm font-bold text-gray-500">
+                    <a href="#" class="hover:text-purple-600 transition-colors">About</a>
+                    <a href="#" class="hover:text-purple-600 transition-colors">Campaigns</a>
+                    <a href="#" class="hover:text-purple-600 transition-colors">Learning</a>
+                </div>
+                <div class="hidden lg:flex items-center bg-gray-50 border border-gray-200 rounded-full px-3 py-2 w-56 ml-6 transition-colors focus-within:border-purple-300 focus-within:bg-white group">
+                    <i data-lucide="search" class="w-4 h-4 text-gray-400 group-focus-within:text-purple-500 transition-colors"></i>
+                    <input type="text" placeholder="Search campaigns" class="bg-transparent border-none outline-none text-xs font-bold text-gray-600 placeholder-gray-400 ml-2 w-full">
+                </div>
+                <div class="flex items-center gap-3 sm:gap-5 ml-6">
+                    <button class="relative text-gray-500 hover:text-purple-600 transition-colors p-1">
+                        <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                        <span class="absolute top-0 right-0 w-2 h-2 bg-orange-500 rounded-full border border-white"></span>
+                    </button>
+                    <div class="h-6 w-px bg-gray-200 hidden sm:block"></div>
+                    <div class="relative">
+                        <button id="profile-menu-button" class="text-gray-400 hover:text-gray-600 hover:bg-gray-100 p-2 rounded-full btn-press transition-colors" title="Profile">
+                            <i data-lucide="user-circle" class="w-6 h-6"></i>
+                        </button>
+                        <div id="profile-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20 hidden">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Campaigns</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Purchases</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Earnings</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-gray-500 hover:text-purple-600">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4">
+
+            <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">About</a>
+            <a href="campaigns.html" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Campaigns</a>
+            <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Learning</a>
+            <div class="relative">
+                <button id="mobile-dashboard-menu-button" class="block w-full text-left py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none">Dashboard</button>
+                <div id="mobile-dashboard-menu" class="hidden pl-8">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Campaigns</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Purchases</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Earnings</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main class="px-4 sm:px-6 lg:px-8 py-8 max-w-5xl mx-auto">
+
+
+
+        <!-- Breadcrumb -->
+        <div class="flex items-center gap-2 text-sm text-gray-500 mb-6 cursor-pointer hover:text-purple-600 transition-colors" onclick="window.history.back()">
+            <i data-lucide="chevron-left" class="w-4 h-4"></i>
+            <span>Back to Management</span>
+        </div>
+
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+            <div>
+                <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight">Review Revisions</h1>
+                <p class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Changes proposed by <span class="text-purple-600 font-bold">Felix</span></p>
+            </div>
+            <div class="bg-amber-100 p-2.5 rounded-2xl shrink-0">
+                <i data-lucide="file-edit" class="w-6 h-6 text-amber-600"></i>
+            </div>
+        </div>
+
+        <!-- Revision List -->
+        <div class="space-y-6">
+            
+            <!-- Revision 1: Campaign Title -->
+            <div class="revision-card bg-white rounded-[2rem] card-shadow border border-gray-100 overflow-hidden">
+                <div class="p-6">
+                    <div class="flex flex-col gap-1 mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span>
+                            <p class="text-[10px] font-black text-purple-700 uppercase tracking-tight">Campaign: Visiting Legoland</p>
+                        </div>
+                        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest pl-3.5">Field: Campaign Title</p>
+                    </div>
+                    
+                    <div class="space-y-3 mb-6">
+                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-100">
+                            <p class="text-[9px] font-bold text-gray-400 uppercase mb-1">Current</p>
+                            <p class="text-xs font-medium text-gray-500 line-through">Visiting Legoland</p>
+                        </div>
+                        <div class="p-3 bg-purple-50 rounded-xl border border-purple-100">
+                            <p class="text-[9px] font-bold text-purple-400 uppercase mb-1">Proposed</p>
+                            <p class="text-sm font-bold text-gray-900">Visiting Legoland California Resort!</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <button onclick="handleRevision(this, 'rejected')" class="py-3 border-2 border-red-50 text-red-500 rounded-2xl text-xs font-bold btn-press hover:bg-red-50">Reject</button>
+                        <button onclick="handleRevision(this, 'approved')" class="py-3 bg-emerald-500 text-white rounded-2xl text-xs font-bold shadow-lg shadow-emerald-100 btn-press">Approve</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Revision 2: Campaign Media -->
+            <div class="revision-card bg-white rounded-[2rem] card-shadow border border-gray-100 overflow-hidden">
+                <div class="p-6">
+                    <div class="flex flex-col gap-1 mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                            <p class="text-[10px] font-black text-blue-700 uppercase tracking-tight">Campaign: Visiting Legoland</p>
+                        </div>
+                        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest pl-3.5">Field: Campaign Media</p>
+                    </div>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="flex gap-3 items-center p-3 bg-gray-50 rounded-xl border border-gray-100 opacity-60">
+                            <img src="https://images.unsplash.com/photo-1513384312027-9fa69a360337?q=80&w=100&auto=format&fit=crop" class="w-12 h-12 rounded-lg object-cover grayscale" alt="Old">
+                            <div>
+                                <p class="text-[9px] font-bold text-gray-400 uppercase">Replaced</p>
+                                <p class="text-[10px] font-medium text-gray-500 line-through">legoland_gate.jpg</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 items-center p-3 bg-purple-50 rounded-xl border border-purple-100">
+                            <img src="https://images.unsplash.com/photo-1594910357426-91f699f7d084?q=80&w=1200&auto=format&fit=crop" class="w-12 h-12 rounded-lg object-cover" alt="New">
+                            <div>
+                                <p class="text-[9px] font-bold text-purple-400 uppercase">Newly Uploaded</p>
+                                <p class="text-[10px] font-bold text-gray-900">handmade_cards_showcase.jpg</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <button onclick="handleRevision(this, 'rejected')" class="py-3 border-2 border-red-50 text-red-500 rounded-2xl text-xs font-bold btn-press hover:bg-red-50">Reject</button>
+                        <button onclick="handleRevision(this, 'approved')" class="py-3 bg-emerald-500 text-white rounded-2xl text-xs font-bold shadow-lg shadow-emerald-100 btn-press">Approve</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Revision 3: Goal Amount -->
+            <div class="revision-card bg-white rounded-[2rem] card-shadow border border-gray-100 overflow-hidden">
+                <div class="p-6">
+                    <div class="flex flex-col gap-1 mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span>
+                            <p class="text-[10px] font-black text-purple-700 uppercase tracking-tight">Campaign: Visiting Legoland</p>
+                        </div>
+                        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest pl-3.5">Field: Funding Goal</p>
+                    </div>
+                    
+                    <div class="space-y-3 mb-6">
+                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-100">
+                            <p class="text-[9px] font-bold text-gray-400 uppercase mb-1">Current</p>
+                            <p class="text-xs font-medium text-gray-500 line-through">$100.00</p>
+                        </div>
+                        <div class="p-3 bg-purple-50 rounded-xl border border-purple-100">
+                            <p class="text-[9px] font-bold text-purple-400 uppercase mb-1">Proposed</p>
+                            <p class="text-sm font-bold text-gray-900">$150.00</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <button onclick="handleRevision(this, 'rejected')" class="py-3 border-2 border-red-50 text-red-500 rounded-2xl text-xs font-bold btn-press">Reject</button>
+                        <button onclick="handleRevision(this, 'approved')" class="py-3 bg-emerald-500 text-white rounded-2xl text-xs font-bold btn-press shadow-md">Approve</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Revision 4: Story Text -->
+            <div class="revision-card bg-white rounded-[2rem] card-shadow border border-gray-100 overflow-hidden">
+                <div class="p-6">
+                    <div class="flex flex-col gap-1 mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span>
+                            <p class="text-[10px] font-black text-purple-700 uppercase tracking-tight">Campaign: Visiting Legoland</p>
+                        </div>
+                        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest pl-3.5">Field: Campaign Statement</p>
+                    </div>
+                    
+                    <div class="space-y-3 mb-6">
+                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-100">
+                            <p class="text-[9px] font-bold text-gray-400 uppercase mb-1">Current</p>
+                            <p class="text-[11px] font-medium text-gray-500 leading-relaxed line-through">I love building with LEGO blocks! I am raising money to visit Legoland California this summer...</p>
+                        </div>
+                        <div class="p-3 bg-purple-50 rounded-xl border border-purple-100">
+                            <p class="text-[9px] font-bold text-purple-400 uppercase mb-1">Proposed</p>
+                            <p class="text-[11px] font-bold text-gray-900 leading-relaxed">I am a master LEGO builder! I am raising money for Legoland because I want to see the giant models and learn how they are made. I'll share my journey with all of you!</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <button onclick="handleRevision(this, 'rejected')" class="py-3 border-2 border-red-50 text-red-500 rounded-2xl text-xs font-bold btn-press">Reject</button>
+                        <button onclick="handleRevision(this, 'approved')" class="py-3 bg-emerald-500 text-white rounded-2xl text-xs font-bold btn-press shadow-md">Approve</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Revision 5: Offering Update -->
+            <div class="revision-card bg-white rounded-[2rem] card-shadow border border-gray-100 overflow-hidden">
+                <div class="p-6">
+                    <div class="flex flex-col gap-1 mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                            <p class="text-[10px] font-black text-orange-700 uppercase tracking-tight">Campaign: Visiting Legoland</p>
+                        </div>
+                        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest pl-3.5">Field: Offering 2 Description</p>
+                    </div>
+                    
+                    <div class="space-y-3 mb-6">
+                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-100">
+                            <p class="text-[9px] font-bold text-gray-400 uppercase mb-1">Current</p>
+                            <p class="text-[11px] font-medium text-gray-500 leading-relaxed line-through">Hand-made bracelet for my supporters.</p>
+                        </div>
+                        <div class="p-3 bg-purple-50 rounded-xl border border-purple-100">
+                            <p class="text-[9px] font-bold text-purple-400 uppercase mb-1">Proposed</p>
+                            <p class="text-[11px] font-bold text-gray-900 leading-relaxed">As a thank you to your support, I'm making colorful bracelets as a token of appreciation! They are super cool, fully adjustable, and come in eye-catching patterns.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <button onclick="handleRevision(this, 'rejected')" class="py-3 border-2 border-red-50 text-red-500 rounded-2xl text-xs font-bold btn-press">Reject</button>
+                        <button onclick="handleRevision(this, 'approved')" class="py-3 bg-emerald-500 text-white rounded-2xl text-xs font-bold btn-press shadow-md">Approve</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer Note -->
+        <div class="mt-12">
+            <p class="text-center text-[10px] text-gray-400 font-medium px-4 leading-relaxed">
+                Note: Rejected changes will be lost and your kid will have to start a new revision request if needed.
+            </p>
+        </div>
+    
+    
+    
+    </main>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Menu elements
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        const profileMenuButton = document.getElementById('profile-menu-button');
+        const profileMenu = document.getElementById('profile-menu');
+        
+        const mobileDashboardMenuButton = document.getElementById('mobile-dashboard-menu-button');
+        const mobileDashboardMenu = document.getElementById('mobile-dashboard-menu');
+
+        // Toggle mobile menu
+        menuBtn.addEventListener('click', (event) => {
+            event.stopPropagation();
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Toggle profile dropdown
+        profileMenuButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            profileMenu.classList.toggle('hidden');
+        });
+        
+        // Toggle mobile dashboard sub-menu
+        mobileDashboardMenuButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            mobileDashboardMenu.classList.toggle('hidden');
+        });
+
+        // Close all menus when clicking anywhere on the window
+        window.addEventListener('click', () => {
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                mobileDashboardMenu.classList.add('hidden'); // Ensure sub-menu is also hidden
+            }
+            if (!profileMenu.classList.contains('hidden')) {
+                profileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+
+</body>
+</html>
+</script>
+</body>
+</html>
