@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | My Little Venture</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FFFFFF;
+        }
+        .mlv-purple { background-color: #8B5CF6; }
+        .mlv-orange { background-color: #F97316; }
+        .mlv-text-purple { color: #8B5CF6; }
+        .mlv-text-orange { color: #F97316; }
+        .btn-press:active {
+            transform: scale(0.96);
+        }
+        .role-card {
+            transition: all 0.3s ease;
+        }
+        .role-card:hover {
+            transform: translateY(-4px);
+        }
+        .role-card.selected {
+            border-color: #8B5CF6;
+            background-color: #F3E8FF;
+        }
+        input:focus {
+            outline: none;
+        }
+        /* Slide-in animation for form panel */
+        .form-panel {
+            position: fixed;
+            right: 0;
+            top: 0;
+            height: 100vh;
+            width: 500px;
+            background: white;
+            box-shadow: -4px 0 6px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 40;
+        }
+        .form-panel.active {
+            transform: translateX(0);
+        }
+        .form-panel-close {
+            position: sticky;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: flex-end;
+            padding: 1rem;
+            background: white;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        @media (max-width: 768px) {
+            .form-panel {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-900">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 px-6 py-4 bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="/mlv-demo/index.html" class="flex items-center gap-2 shrink-0">
+                <img src="https://uat.mylittleventure.com/images/mlv-logo.svg" alt="My Little Venture" class="h-10 w-auto">
+            </a>
+            <div class="flex items-center gap-4">
+                <p class="text-sm text-gray-500">Already have an account?</p>
+                <a href="/mlv-demo/signin.html" class="text-sm font-bold mlv-text-purple hover:underline">Sign In</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="px-4 sm:px-6 lg:px-8 py-16 max-w-6xl mx-auto">
+        <!-- Header Section -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl sm:text-5xl font-[900] text-gray-900 mb-4 tracking-tight">Let's get started</h1>
+            <p class="text-gray-500 font-medium text-lg max-w-2xl mx-auto">
+                Choose the account type that best fits your role so we can create the perfect experience for you on My Little Venture.
+            </p>
+        </div>
+
+        <!-- Role Selection Grid (Smaller Cards) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
+            <!-- Kid Creator Card -->
+            <div class="role-card p-6 border-2 border-gray-200 rounded-2xl cursor-pointer transition-all hover:shadow-lg" id="kid-role">
+                <div class="flex items-start gap-3 mb-3">
+                    <div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="sparkles" class="w-5 h-5 mlv-text-purple"></i>
+                    </div>
+                    <input type="radio" name="role" value="kid" class="mt-1" id="role-kid">
+                </div>
+                <label for="role-kid" class="cursor-pointer">
+                    <h3 class="text-lg font-bold text-gray-900 mb-1">Kid Creator</h3>
+                    <p class="text-sm text-gray-500 font-medium">Create campaigns and sell creations.</p>
+                </label>
+            </div>
+
+            <!-- Parent/Guardian Card -->
+            <div class="role-card p-6 border-2 border-gray-200 rounded-2xl cursor-pointer transition-all hover:shadow-lg" id="guardian-role">
+                <div class="flex items-start gap-3 mb-3">
+                    <div class="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="shield-check" class="w-5 h-5 mlv-text-orange"></i>
+                    </div>
+                    <input type="radio" name="role" value="guardian" class="mt-1" id="role-guardian">
+                </div>
+                <label for="role-guardian" class="cursor-pointer">
+                    <h3 class="text-lg font-bold text-gray-900 mb-1">Parent/Guardian</h3>
+                    <p class="text-sm text-gray-500 font-medium">Your child creates and sells.</p>
+                </label>
+            </div>
+
+            <!-- Supporter Card -->
+            <div class="role-card p-6 border-2 border-gray-200 rounded-2xl cursor-pointer transition-all hover:shadow-lg" id="supporter-role">
+                <div class="flex items-start gap-3 mb-3">
+                    <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="heart" class="w-5 h-5 text-green-600"></i>
+                    </div>
+                    <input type="radio" name="role" value="supporter" class="mt-1" id="role-supporter">
+                </div>
+                <label for="role-supporter" class="cursor-pointer">
+                    <h3 class="text-lg font-bold text-gray-900 mb-1">Supporter</h3>
+                    <p class="text-sm text-gray-500 font-medium">Shop and support creators.</p>
+                </label>
+            </div>
+        </div>
+    </main>
+
+    <!-- Form Slide-In Panel -->
+    <div class="form-panel" id="form-panel">
+        <div class="form-panel-close">
+            <button type="button" id="close-panel" class="p-2 text-gray-400 hover:text-gray-600">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+        
+        <div class="px-6 pb-8">
+            <form class="space-y-6" id="signup-form">
+                <!-- KID ROLE FORM -->
+                <div id="kid-form" class="hidden space-y-6">
+                    <!-- Age Field -->
+                    <div class="space-y-2">
+                        <label for="age" class="text-sm font-bold text-gray-700 block">How old are you?</label>
+                        <div class="relative">
+                            <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                <i data-lucide="calendar" class="w-5 h-5"></i>
+                            </div>
+                            <input 
+                                type="number" 
+                                id="age" 
+                                name="age" 
+                                placeholder="Enter your age" 
+                                min="1"
+                                max="120"
+                                class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Under 13 Warning (Hidden by default) -->
+                    <div id="under-13-warning" class="hidden bg-orange-50 border-2 border-orange-200 rounded-2xl p-6">
+                        <div class="flex gap-3">
+                            <div class="flex-shrink-0 pt-0.5">
+                                <i data-lucide="alert-circle" class="w-6 h-6 mlv-text-orange"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-orange-900 mb-1">Age Requirement</p>
+                                <p class="text-sm text-orange-800">For kids under 13, please ask your guardian/parent to launch campaigns on your behalf. They can set up an account as a Parent/Guardian and create campaigns for you.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Age 18+ Warning (Hidden by default) -->
+                    <div id="age-18-plus-warning" class="hidden bg-blue-50 border-2 border-blue-200 rounded-2xl p-6">
+                        <div class="flex gap-3">
+                            <div class="flex-shrink-0 pt-0.5">
+                                <i data-lucide="info" class="w-6 h-6 text-blue-600"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-blue-900 mb-1">Account Type Selection</p>
+                                <p class="text-sm text-blue-800">Age 18 or older? Please sign up as a <span class="font-bold">Parent/Guardian</span> or <span class="font-bold">Supporter</span> instead. Those account types are better suited for your age group.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Age 13+ Form (Hidden until confirmed) -->
+                    <div id="age-13-plus-form" class="hidden space-y-6">
+                        <!-- Nickname Field -->
+                        <div class="space-y-2">
+                            <label for="nickname" class="text-sm font-bold text-gray-700 block">Nickname</label>
+                            <div class="relative">
+                                <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                    <i data-lucide="user" class="w-5 h-5"></i>
+                                </div>
+                                <input 
+                                    type="text" 
+                                    id="nickname" 
+                                    name="nickname" 
+                                    placeholder="What should we call you?" 
+                                    class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Email Field -->
+                        <div class="space-y-2">
+                            <label for="kid-email" class="text-sm font-bold text-gray-700 block">Email</label>
+                            <div class="relative">
+                                <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                    <i data-lucide="mail" class="w-5 h-5"></i>
+                                </div>
+                                <input 
+                                    type="email" 
+                                    id="kid-email" 
+                                    name="email" 
+                                    placeholder="you@example.com" 
+                                    class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Password Field -->
+                        <div class="space-y-2">
+                            <label for="kid-password" class="text-sm font-bold text-gray-700 block">Password</label>
+                            <div class="relative">
+                                <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                    <i data-lucide="lock" class="w-5 h-5"></i>
+                                </div>
+                                <input 
+                                    type="password" 
+                                    id="kid-password" 
+                                    name="password" 
+                                    placeholder="Create a strong password" 
+                                    class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Confirm Password Field -->
+                        <div class="space-y-2">
+                            <label for="kid-confirm-password" class="text-sm font-bold text-gray-700 block">Confirm Password</label>
+                            <div class="relative">
+                                <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                    <i data-lucide="lock" class="w-5 h-5"></i>
+                                </div>
+                                <input 
+                                    type="password" 
+                                    id="kid-confirm-password" 
+                                    name="confirm-password" 
+                                    placeholder="Confirm your password" 
+                                    class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                                    required
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PARENT/GUARDIAN ROLE FORM -->
+                <div id="guardian-form" class="hidden space-y-6">
+                    <!-- First Name Field -->
+                    <div class="space-y-2">
+                        <label for="first-name" class="text-sm font-bold text-gray-700 block">First Name</label>
+                        <div class="relative">
+                            <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                <i data-lucide="user" class="w-5 h-5"></i>
+                            </div>
+                            <input 
+                                type="text" 
+                                id="first-name" 
+                                name="first-name" 
+                                placeholder="Your first name" 
+                                class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Last Name Field -->
+                    <div class="space-y-2">
+                        <label for="last-name" class="text-sm font-bold text-gray-700 block">Last Name</label>
+                        <div class="relative">
+                            <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                <i data-lucide="user" class="w-5 h-5"></i>
+                            </div>
+                            <input 
+                                type="text" 
+                                id="last-name" 
+                                name="last-name" 
+                                placeholder="Your last name" 
+                                class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="space-y-2">
+                        <label for="guardian-email" class="text-sm font-bold text-gray-700 block">Email</label>
+                        <div class="relative">
+                            <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <input 
+                                type="email" 
+                                id="guardian-email" 
+                                name="email" 
+                                placeholder="you@example.com" 
+                                class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="space-y-2">
+                        <label for="guardian-password" class="text-sm font-bold text-gray-700 block">Password</label>
+                        <div class="relative">
+                            <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                <i data-lucide="lock" class="w-5 h-5"></i>
+                            </div>
+                            <input 
+                                type="password" 
+                                id="guardian-password" 
+                                name="password" 
+                                placeholder="Create a strong password" 
+                                class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Confirm Password Field -->
+                    <div class="space-y-2">
+                        <label for="guardian-confirm-password" class="text-sm font-bold text-gray-700 block">Confirm Password</label>
+                        <div class="relative">
+                            <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                <i data-lucide="lock" class="w-5 h-5"></i>
+                            </div>
+                            <input 
+                                type="password" 
+                                id="guardian-confirm-password" 
+                                name="confirm-password" 
+                                placeholder="Confirm your password" 
+                                class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                                required
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUPPORTER ROLE FORM -->
+                <div id="supporter-form" class="hidden space-y-6">
+                    <!-- First Name Field -->
+                    <div class="space-y-2">
+                        <label for="supporter-first-name" class="text-sm font-bold text-gray-700 block">First Name</label>
+                        <div class="relative">
+                            <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                <i data-lucide="user" class="w-5 h-5"></i>
+                            </div>
+                            <input 
+                                type="text" 
+                                id="supporter-first-name" 
+                                name="first-name" 
+                                placeholder="Your first name" 
+                                class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Last Name Field -->
+                    <div class="space-y-2">
+                        <label for="supporter-last-name" class="text-sm font-bold text-gray-700 block">Last Name</label>
+                        <div class="relative">
+                            <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                <i data-lucide="user" class="w-5 h-5"></i>
+                            </div>
+                            <input 
+                                type="text" 
+                                id="supporter-last-name" 
+                                name="last-name" 
+                                placeholder="Your last name" 
+                                class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="space-y-2">
+                        <label for="supporter-email" class="text-sm font-bold text-gray-700 block">Email</label>
+                        <div class="relative">
+                            <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <input 
+                                type="email" 
+                                id="supporter-email" 
+                                name="email" 
+                                placeholder="you@example.com" 
+                                class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="space-y-2">
+                        <label for="supporter-password" class="text-sm font-bold text-gray-700 block">Password</label>
+                        <div class="relative">
+                            <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                <i data-lucide="lock" class="w-5 h-5"></i>
+                            </div>
+                            <input 
+                                type="password" 
+                                id="supporter-password" 
+                                name="password" 
+                                placeholder="Create a strong password" 
+                                class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Confirm Password Field -->
+                    <div class="space-y-2">
+                        <label for="supporter-confirm-password" class="text-sm font-bold text-gray-700 block">Confirm Password</label>
+                        <div class="relative">
+                            <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                <i data-lucide="lock" class="w-5 h-5"></i>
+                            </div>
+                            <input 
+                                type="password" 
+                                id="supporter-confirm-password" 
+                                name="confirm-password" 
+                                placeholder="Confirm your password" 
+                                class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                                required
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OTP Verification Section (Hidden until form submitted) -->
+                <div id="otp-section" class="hidden space-y-6">
+                    <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6">
+                        <h3 class="text-lg font-bold text-blue-900 mb-2">Verify Your Email</h3>
+                        <p class="text-sm text-blue-800 mb-4">We've sent a verification code to your email. Enter it below to complete your signup.</p>
+                        
+                        <div class="space-y-2">
+                            <label for="otp" class="text-sm font-bold text-gray-700 block">Verification Code</label>
+                            <div class="relative">
+                                <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                    <i data-lucide="key" class="w-5 h-5"></i>
+                                </div>
+                                <input 
+                                    type="text" 
+                                    id="otp" 
+                                    name="otp" 
+                                    placeholder="Enter 6-digit code" 
+                                    maxlength="6"
+                                    class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-center text-2xl tracking-widest"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <button type="button" class="mt-4 text-sm mlv-text-purple font-bold hover:underline">
+                            Didn't receive code? Resend
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Terms Checkbox (Hidden until age verified) -->
+                <div id="terms-section" class="hidden flex items-start gap-3 py-4">
+                    <input 
+                        type="checkbox" 
+                        id="terms" 
+                        name="terms" 
+                        class="mt-1 w-4 h-4 rounded border-gray-300 mlv-purple focus:ring-2 focus:ring-purple-500"
+                        required
+                    >
+                    <label for="terms" class="text-sm text-gray-600">
+                        I agree to the <a href="#" class="mlv-text-purple font-bold hover:underline">Terms of Service</a> and <a href="#" class="mlv-text-purple font-bold hover:underline">Privacy Policy</a>
+                    </label>
+                </div>
+
+                <!-- Submit Button -->
+                <button 
+                    type="submit" 
+                    id="submit-btn"
+                    class="w-full mlv-purple text-white py-3 rounded-2xl font-bold text-lg btn-press shadow-lg shadow-purple-200 hover:opacity-95 transition-opacity flex items-center justify-center gap-2 mt-8 hidden"
+                >
+                    Create Account
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </button>
+
+                <!-- Sign In Link -->
+                <div class="text-center">
+                    <p class="text-gray-500 font-medium">
+                        Already have an account? 
+                        <a href="/mlv-demo/signin.html" class="mlv-text-purple font-bold hover:underline">Sign In</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Role selection logic
+        const kidRole = document.getElementById('kid-role');
+        const guardianRole = document.getElementById('guardian-role');
+        const supporterRole = document.getElementById('supporter-role');
+        const kidRadio = document.getElementById('role-kid');
+        const guardianRadio = document.getElementById('role-guardian');
+        const supporterRadio = document.getElementById('role-supporter');
+        const formPanel = document.getElementById('form-panel');
+        const closePanel = document.getElementById('close-panel');
+        const kidForm = document.getElementById('kid-form');
+        const guardianForm = document.getElementById('guardian-form');
+        const supporterForm = document.getElementById('supporter-form');
+        const termsSection = document.getElementById('terms-section');
+        const ageInput = document.getElementById('age');
+        const under13Warning = document.getElementById('under-13-warning');
+        const age13PlusForm = document.getElementById('age-13-plus-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const signupForm = document.getElementById('signup-form');
+
+        function handleRoleClick(role, radio) {
+            kidRadio.checked = false;
+            guardianRadio.checked = false;
+            supporterRadio.checked = false;
+            radio.checked = true;
+            
+            kidRole.classList.remove('selected');
+            guardianRole.classList.remove('selected');
+            supporterRole.classList.remove('selected');
+            
+            kidForm.classList.add('hidden');
+            guardianForm.classList.add('hidden');
+            supporterForm.classList.add('hidden');
+            termsSection.classList.add('hidden');
+            submitBtn.classList.add('hidden');
+            age13PlusForm.classList.add('hidden');
+            under13Warning.classList.add('hidden');
+            
+            if (role === 'kid') {
+                kidRole.classList.add('selected');
+                kidForm.classList.remove('hidden');
+                ageInput.focus();
+            } else if (role === 'guardian') {
+                guardianRole.classList.add('selected');
+                guardianForm.classList.remove('hidden');
+                termsSection.classList.remove('hidden');
+                submitBtn.classList.remove('hidden');
+            } else if (role === 'supporter') {
+                supporterRole.classList.add('selected');
+                supporterForm.classList.remove('hidden');
+                termsSection.classList.remove('hidden');
+                submitBtn.classList.remove('hidden');
+            }
+            
+            // Slide in the form panel
+            formPanel.classList.add('active');
+        }
+
+        kidRole.addEventListener('click', () => handleRoleClick('kid', kidRadio));
+        guardianRole.addEventListener('click', () => handleRoleClick('guardian', guardianRadio));
+        supporterRole.addEventListener('click', () => handleRoleClick('supporter', supporterRadio));
+
+        // Close panel button
+        closePanel.addEventListener('click', () => {
+            formPanel.classList.remove('active');
+            // Reset form after animation completes
+            setTimeout(() => {
+                kidRadio.checked = false;
+                guardianRadio.checked = false;
+                supporterRadio.checked = false;
+                kidRole.classList.remove('selected');
+                guardianRole.classList.remove('selected');
+                supporterRole.classList.remove('selected');
+                kidForm.classList.add('hidden');
+                guardianForm.classList.add('hidden');
+                supporterForm.classList.add('hidden');
+                termsSection.classList.add('hidden');
+                submitBtn.classList.add('hidden');
+                age13PlusForm.classList.add('hidden');
+                under13Warning.classList.add('hidden');
+                ageInput.value = '';
+            }, 400);
+        });
+
+        // Age verification for kids
+        ageInput.addEventListener('change', () => {
+            const age = parseInt(ageInput.value);
+            const under13Warning = document.getElementById('under-13-warning');
+            const age18PlusWarning = document.getElementById('age-18-plus-warning');
+            
+            if (age < 13) {
+                under13Warning.classList.remove('hidden');
+                age18PlusWarning.classList.add('hidden');
+                age13PlusForm.classList.add('hidden');
+                termsSection.classList.add('hidden');
+                submitBtn.classList.add('hidden');
+            } else if (age >= 18) {
+                age18PlusWarning.classList.remove('hidden');
+                under13Warning.classList.add('hidden');
+                age13PlusForm.classList.add('hidden');
+                termsSection.classList.add('hidden');
+                submitBtn.classList.add('hidden');
+            } else {
+                under13Warning.classList.add('hidden');
+                age18PlusWarning.classList.add('hidden');
+                age13PlusForm.classList.remove('hidden');
+                termsSection.classList.remove('hidden');
+                submitBtn.classList.remove('hidden');
+            }
+        });
+
+        // Form submission
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            let role = 'guardian';
+            if (kidRadio.checked) role = 'kid';
+            else if (supporterRadio.checked) role = 'supporter';
+            
+            // For kids under 13, don't proceed
+            if (role === 'kid' && parseInt(ageInput.value) < 13) {
+                return;
+            }
+            
+            // Show OTP section
+            const otpSection = document.getElementById('otp-section');
+            const formFields = signupForm.querySelector('div:not(#otp-section)');
+            
+            // Hide all form fields except OTP
+            kidForm.classList.add('hidden');
+            guardianForm.classList.add('hidden');
+            supporterForm.classList.add('hidden');
+            termsSection.classList.add('hidden');
+            submitBtn.classList.add('hidden');
+            
+            otpSection.classList.remove('hidden');
+            otpSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    </script>
+
+</body>
+</html>
