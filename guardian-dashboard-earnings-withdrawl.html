@@ -93,6 +93,17 @@
             border-radius: 15px;
             animation: pulse-dot 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite;
         }
+        .expandable-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .rotate-icon {
+            transition: transform 0.3s ease;
+        }
+        .rotate-icon.rotate-180 {
+            transform: rotate(180deg);
+        }
         ::-webkit-scrollbar { width: 0px; background: transparent; }
     </style>
 </head>
@@ -190,6 +201,62 @@
                     <div>
                         <p class="text-[9px] font-bold text-gray-400 uppercase">Lifetime</p>
                         <p class="text-sm font-bold text-gray-600">$450.00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Refer & Earn Card (NEW) -->
+        <div class="bg-white rounded-[2.5rem] p-6 sm:p-8 card-shadow border border-orange-100 mb-8 text-center relative overflow-hidden">
+            <div class="relative z-10">
+                <p class="text-[10px] font-bold text-orange-400 uppercase tracking-[0.2em] mb-2">Invite your friends!</p>
+                <h2 class="text-xl sm:text-2xl font-black text-gray-900 mb-6 tracking-tight">Earn when they earn</h2>
+                <a href="refer-a-friend.html" class="w-full mlv-orange text-white py-4 rounded-2xl font-bold shadow-xl shadow-orange-100 flex items-center justify-center gap-2 btn-press transition-all hover:opacity-95">
+                    <i data-lucide="gift" class="w-5 h-5"></i>
+                    Refer & Earn
+                </a>
+            </div>
+        </div>
+
+
+
+        <!-- Referral Earnings Collapsible Card -->
+        <div class="space-y-4 mb-8">
+            <button id="toggle-referral-earnings" class="w-full text-left flex items-center justify-between px-1 mb-4 focus:outline-none">
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">Total Referral Earnings</p>
+                <i data-lucide="chevron-down" id="referral-earnings-icon" class="w-4 h-4 text-gray-400 rotate-icon"></i>
+            </button>
+            <div id="referral-list-container" class="expandable-list">
+                <div class="bg-white rounded-3xl card-shadow border border-gray-50 overflow-hidden">
+                    <div class="px-5 pb-5 space-y-3">
+                        <div class="border-t border-gray-50 pt-3">
+                            <!-- Referral Item 1 -->
+                            <div class="flex items-center justify-between py-2">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 bg-gray-50 rounded-full flex items-center justify-center">
+                                        <i data-lucide="users" class="w-4 h-4 text-gray-400"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold text-gray-800">Friend A</p>
+                                        <p class="text-[9px] text-gray-400">Joined Oct 25</p>
+                                    </div>
+                                </div>
+                                <p class="text-xs font-black text-emerald-600">+$5.00</p>
+                            </div>
+                            <!-- Referral Item 2 -->
+                            <div class="flex items-center justify-between py-2">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 bg-gray-50 rounded-full flex items-center justify-center">
+                                        <i data-lucide="users" class="w-4 h-4 text-gray-400"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold text-gray-800">Friend B</p>
+                                        <p class="text-[9px] text-gray-400">Joined Oct 20</p>
+                                    </div>
+                                </div>
+                                <p class="text-xs font-black text-emerald-600">+$5.00</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -317,6 +384,23 @@
         // Initialize Lucide icons
         lucide.createIcons();
 
+        function toggleTransactions(targetId, iconId) {
+            const targetElement = document.getElementById(targetId);
+            const iconElement = document.getElementById(iconId);
+
+            if (targetElement) {
+                if (targetElement.classList.contains('expandable-list-active')) {
+                    targetElement.style.maxHeight = '0px';
+                    targetElement.classList.remove('expandable-list-active');
+                    if (iconElement) iconElement.classList.remove('rotate-180');
+                } else {
+                    targetElement.style.maxHeight = targetElement.scrollHeight + 'px';
+                    targetElement.classList.add('expandable-list-active');
+                    if (iconElement) iconElement.classList.add('rotate-180');
+                }
+            }
+        }
+
         // Menu elements
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -343,6 +427,12 @@
         mobileDashboardMenuButton.addEventListener('click', (event) => {
             event.stopPropagation();
             mobileDashboardMenu.classList.toggle('hidden');
+        });
+
+        // Toggle Referral Earnings section
+        const toggleReferralEarnings = document.getElementById('toggle-referral-earnings');
+        toggleReferralEarnings.addEventListener('click', () => {
+            toggleTransactions('referral-list-container', 'referral-earnings-icon');
         });
 
         // Close all menus when clicking anywhere on the window

@@ -54,7 +54,7 @@
             top: 0;
             left: 0;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             padding: 1rem;
             background: white;
             border-bottom: 1px solid #f3f4f6;
@@ -93,42 +93,42 @@
         <!-- Role Selection Grid (Smaller Cards) -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
             <!-- Kid Creator Card -->
-            <div class="role-card p-6 border-2 border-gray-200 rounded-2xl cursor-pointer transition-all hover:shadow-lg" id="kid-role">
+            <div class="role-card p-6 border-2 border-gray-200 rounded-2xl cursor-pointer transition-all hover:shadow-lg flex flex-col items-start" id="kid-role">
                 <div class="flex items-start gap-3 mb-3">
                     <div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
                         <i data-lucide="sparkles" class="w-5 h-5 mlv-text-purple"></i>
                     </div>
                     <input type="radio" name="role" value="kid" class="mt-1" id="role-kid">
                 </div>
-                <label for="role-kid" class="cursor-pointer">
+                <label for="role-kid" class="cursor-pointer flex-grow">
                     <h3 class="text-lg font-bold text-gray-900 mb-1">Kid Creator</h3>
                     <p class="text-sm text-gray-500 font-medium">Create campaigns and sell creations.</p>
                 </label>
             </div>
 
             <!-- Parent/Guardian Card -->
-            <div class="role-card p-6 border-2 border-gray-200 rounded-2xl cursor-pointer transition-all hover:shadow-lg" id="guardian-role">
+            <div class="role-card p-6 border-2 border-gray-200 rounded-2xl cursor-pointer transition-all hover:shadow-lg flex flex-col items-start" id="guardian-role">
                 <div class="flex items-start gap-3 mb-3">
                     <div class="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0">
                         <i data-lucide="shield-check" class="w-5 h-5 mlv-text-orange"></i>
                     </div>
                     <input type="radio" name="role" value="guardian" class="mt-1" id="role-guardian">
                 </div>
-                <label for="role-guardian" class="cursor-pointer">
+                <label for="role-guardian" class="cursor-pointer flex-grow">
                     <h3 class="text-lg font-bold text-gray-900 mb-1">Parent/Guardian</h3>
                     <p class="text-sm text-gray-500 font-medium">Your child creates and sells.</p>
                 </label>
             </div>
 
             <!-- Supporter Card -->
-            <div class="role-card p-6 border-2 border-gray-200 rounded-2xl cursor-pointer transition-all hover:shadow-lg" id="supporter-role">
+            <div class="role-card p-6 border-2 border-gray-200 rounded-2xl cursor-pointer transition-all hover:shadow-lg flex flex-col items-start" id="supporter-role">
                 <div class="flex items-start gap-3 mb-3">
                     <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
                         <i data-lucide="heart" class="w-5 h-5 text-green-600"></i>
                     </div>
                     <input type="radio" name="role" value="supporter" class="mt-1" id="role-supporter">
                 </div>
-                <label for="role-supporter" class="cursor-pointer">
+                <label for="role-supporter" class="cursor-pointer flex-grow">
                     <h3 class="text-lg font-bold text-gray-900 mb-1">Supporter</h3>
                     <p class="text-sm text-gray-500 font-medium">Shop and support creators.</p>
                 </label>
@@ -139,6 +139,13 @@
     <!-- Form Slide-In Panel -->
     <div class="form-panel" id="form-panel">
         <div class="form-panel-close">
+            <!-- Back link for mobile -->
+            <button type="button" id="back-panel" class="flex items-center gap-2 p-2 text-gray-500 hover:text-gray-700 md:hidden">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                <span class="font-medium">Back</span>
+            </button>
+            
+            <!-- Close button -->
             <button type="button" id="close-panel" class="p-2 text-gray-400 hover:text-gray-600">
                 <i data-lucide="x" class="w-6 h-6"></i>
             </button>
@@ -542,6 +549,28 @@
         const age13PlusForm = document.getElementById('age-13-plus-form');
         const submitBtn = document.getElementById('submit-btn');
         const signupForm = document.getElementById('signup-form');
+        const backPanel = document.getElementById('back-panel'); // Added this line
+
+        function closeFormPanelAndReset() { // Created this function
+            formPanel.classList.remove('active');
+            // Reset form after animation completes
+            setTimeout(() => {
+                kidRadio.checked = false;
+                guardianRadio.checked = false;
+                supporterRadio.checked = false;
+                kidRole.classList.remove('selected');
+                guardianRole.classList.remove('selected');
+                supporterRole.classList.remove('selected');
+                kidForm.classList.add('hidden');
+                guardianForm.classList.add('hidden');
+                supporterForm.classList.add('hidden');
+                termsSection.classList.add('hidden');
+                submitBtn.classList.add('hidden');
+                age13PlusForm.classList.add('hidden');
+                under13Warning.classList.add('hidden');
+                ageInput.value = '';
+            }, 400);
+        }
 
         function handleRoleClick(role, radio) {
             kidRadio.checked = false;
@@ -586,26 +615,10 @@
         supporterRole.addEventListener('click', () => handleRoleClick('supporter', supporterRadio));
 
         // Close panel button
-        closePanel.addEventListener('click', () => {
-            formPanel.classList.remove('active');
-            // Reset form after animation completes
-            setTimeout(() => {
-                kidRadio.checked = false;
-                guardianRadio.checked = false;
-                supporterRadio.checked = false;
-                kidRole.classList.remove('selected');
-                guardianRole.classList.remove('selected');
-                supporterRole.classList.remove('selected');
-                kidForm.classList.add('hidden');
-                guardianForm.classList.add('hidden');
-                supporterForm.classList.add('hidden');
-                termsSection.classList.add('hidden');
-                submitBtn.classList.add('hidden');
-                age13PlusForm.classList.add('hidden');
-                under13Warning.classList.add('hidden');
-                ageInput.value = '';
-            }, 400);
-        });
+        closePanel.addEventListener('click', closeFormPanelAndReset); // Used the new function
+
+        // Add event listener for the new back button // Added this event listener
+        backPanel.addEventListener('click', closeFormPanelAndReset);
 
         // Age verification for kids
         ageInput.addEventListener('change', () => {
