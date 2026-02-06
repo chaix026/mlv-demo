@@ -1,47 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create New Campaign | My Little Venture</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #F8F9FC;
         }
-        .mlv-purple { background-color: #8B5CF6; }
-        .mlv-orange { background-color: #F97316; }
-        .mlv-text-purple { color: #8B5CF6; }
+
+        .mlv-purple {
+            background-color: #8B5CF6;
+        }
+
+        .mlv-orange {
+            background-color: #F97316;
+        }
+
+        .mlv-text-purple {
+            color: #8B5CF6;
+        }
+
         .glass-nav {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
             border-top: 1px solid rgba(226, 232, 240, 0.8);
         }
+
         .card-shadow {
             box-shadow: 0 4px 20px -2px rgba(139, 92, 246, 0.08);
         }
+
         .input-focus:focus {
             outline: none;
             border-color: #8B5CF6;
             box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
         }
+
         .btn-press:active {
             transform: scale(0.98);
         }
+
         /* Custom radio styling */
-        .custom-radio:checked + label {
+        .custom-radio:checked+label {
             border-color: #8B5CF6;
             background-color: rgba(139, 92, 246, 0.05);
         }
-        .custom-radio:checked + label .radio-circle {
+
+        .custom-radio:checked+label .radio-circle {
             border-color: #8B5CF6;
             border-width: 5px;
         }
     </style>
 </head>
+
 <body class="text-gray-900">
 
     <!-- Navigation -->
@@ -49,9 +67,10 @@
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <!-- Logo -->
             <a href="/mlv-demo/index.html" class="flex items-center gap-2 shrink-0">
-                <img src="https://uat.mylittleventure.com/images/mlv-logo.svg" alt="My Little Venture" class="h-10 w-auto">
+                <img src="https://uat.mylittleventure.com/images/mlv-logo.svg" alt="My Little Venture"
+                    class="h-10 w-auto">
             </a>
-            
+
             <!-- Desktop Navigation -->
             <div class="hidden md:flex items-center gap-8">
                 <div class="flex items-center gap-8 text-sm font-bold text-gray-500">
@@ -59,24 +78,30 @@
                     <a href="#" class="hover:text-purple-600 transition-colors">Campaigns</a>
                     <a href="#" class="hover:text-purple-600 transition-colors">Learning</a>
                 </div>
-                <div class="hidden lg:flex items-center bg-gray-50 border border-gray-200 rounded-full px-3 py-2 w-56 ml-6 transition-colors focus-within:border-purple-300 focus-within:bg-white group">
-                    <i data-lucide="search" class="w-4 h-4 text-gray-400 group-focus-within:text-purple-500 transition-colors"></i>
-                    <input type="text" placeholder="Search campaigns" class="bg-transparent border-none outline-none text-xs font-bold text-gray-600 placeholder-gray-400 ml-2 w-full">
+                <div
+                    class="hidden lg:flex items-center bg-gray-50 border border-gray-200 rounded-full px-3 py-2 w-56 ml-6 transition-colors focus-within:border-purple-300 focus-within:bg-white group">
+                    <i data-lucide="search"
+                        class="w-4 h-4 text-gray-400 group-focus-within:text-purple-500 transition-colors"></i>
+                    <input type="text" placeholder="Search campaigns"
+                        class="bg-transparent border-none outline-none text-xs font-bold text-gray-600 placeholder-gray-400 ml-2 w-full">
                 </div>
                 <div class="flex items-center gap-3 sm:gap-5 ml-6">
                     <button class="relative text-gray-500 hover:text-purple-600 transition-colors p-1">
                         <i data-lucide="shopping-cart" class="w-5 h-5"></i>
-                        <span class="absolute top-0 right-0 w-2 h-2 bg-orange-500 rounded-full border border-white"></span>
+                        <span
+                            class="absolute top-0 right-0 w-2 h-2 bg-orange-500 rounded-full border border-white"></span>
                     </button>
                     <div class="h-6 w-px bg-gray-200 hidden sm:block"></div>
                     <div class="relative">
-                        <button id="profile-menu-button" class="text-gray-400 hover:text-gray-600 hover:bg-gray-100 p-2 rounded-full btn-press transition-colors" title="Profile">
+                        <button id="profile-menu-button"
+                            class="text-gray-400 hover:text-gray-600 hover:bg-gray-100 p-2 rounded-full btn-press transition-colors"
+                            title="Profile">
                             <i data-lucide="user-circle" class="w-6 h-6"></i>
                         </button>
-                        <div id="profile-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20 hidden">
+                        <div id="profile-menu"
+                            class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20 hidden">
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Campaigns</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Purchases</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Earnings</a>
+
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Log Out</a>
                         </div>
@@ -99,11 +124,11 @@
             <a href="campaigns.html" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Campaigns</a>
             <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Learning</a>
             <div class="relative">
-                <button id="mobile-dashboard-menu-button" class="block w-full text-left py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none">Dashboard</button>
+                <button id="mobile-dashboard-menu-button"
+                    class="block w-full text-left py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none">Dashboard</button>
                 <div id="mobile-dashboard-menu" class="hidden pl-8">
                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Campaigns</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Purchases</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Earnings</a>
+
                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Log Out</a>
                 </div>
@@ -121,22 +146,26 @@
         <form class="space-y-10">
             <!-- Step 1: Guardian Approval -->
             <section class="space-y-4">
-                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest px-1">Step 1: Choose guardian email for approval</p>
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest px-1">Step 1: Choose guardian email
+                    for approval</p>
                 <div class="flex flex-wrap items-center gap-2">
                     <!-- Guardian Option 1 -->
                     <input type="radio" name="guardian_email" id="guardian1" value="mom@email.com" class="hidden peer">
-                    <label for="guardian1" class="px-4 py-2 bg-white border-2 border-transparent rounded-full cursor-pointer peer-checked:border-purple-500 peer-checked:bg-purple-50/50 card-shadow transition-all hover:border-purple-200 text-xs font-bold text-gray-700">
+                    <label for="guardian1"
+                        class="px-4 py-2 bg-white border-2 border-transparent rounded-full cursor-pointer peer-checked:border-purple-500 peer-checked:bg-purple-50/50 card-shadow transition-all hover:border-purple-200 text-xs font-bold text-gray-700">
                         mom@email.com
                     </label>
 
                     <!-- Guardian Option 2 -->
                     <input type="radio" name="guardian_email" id="guardian2" value="dad@email.com" class="hidden peer">
-                    <label for="guardian2" class="px-4 py-2 bg-white border-2 border-transparent rounded-full cursor-pointer peer-checked:border-purple-500 peer-checked:bg-purple-50/50 card-shadow transition-all hover:border-purple-200 text-xs font-bold text-gray-700">
+                    <label for="guardian2"
+                        class="px-4 py-2 bg-white border-2 border-transparent rounded-full cursor-pointer peer-checked:border-purple-500 peer-checked:bg-purple-50/50 card-shadow transition-all hover:border-purple-200 text-xs font-bold text-gray-700">
                         dad@email.com
                     </label>
 
                     <!-- Add New Guardian -->
-                    <button type="button" class="px-4 py-2 border-2 border-dashed border-gray-200 rounded-full bg-white/50 text-gray-400 hover:border-purple-300 hover:text-purple-400 transition-all text-xs font-bold flex items-center gap-1">
+                    <button type="button"
+                        class="px-4 py-2 border-2 border-dashed border-gray-200 rounded-full bg-white/50 text-gray-400 hover:border-purple-300 hover:text-purple-400 transition-all text-xs font-bold flex items-center gap-1">
                         <i data-lucide="plus" class="w-3 h-3"></i>
                         <span>Add New Guardian Email</span>
                     </button>
@@ -146,15 +175,17 @@
             <!-- Step 2: Campaign Info -->
             <section class="space-y-6">
                 <p class="text-xs font-bold text-gray-400 uppercase tracking-widest px-1">Step 2: Campaign Details</p>
-                
+
                 <div class="space-y-1.5">
                     <label class="text-xs font-bold text-gray-700 px-1">Campaign Title</label>
-                    <input type="text" placeholder="Give your campaign a title" class="w-full bg-white p-4 rounded-2xl border border-gray-100 card-shadow input-focus text-sm font-medium">
+                    <input type="text" placeholder="Give your campaign a title"
+                        class="w-full bg-white p-4 rounded-2xl border border-gray-100 card-shadow input-focus text-sm font-medium">
                 </div>
 
                 <div class="space-y-1.5">
                     <label class="text-xs font-bold text-gray-700 px-1">Category</label>
-                    <select class="w-full bg-white p-4 rounded-2xl border border-gray-100 card-shadow input-focus text-sm font-medium appearance-none">
+                    <select
+                        class="w-full bg-white p-4 rounded-2xl border border-gray-100 card-shadow input-focus text-sm font-medium appearance-none">
                         <option>Gifts & Toys</option>
                         <option>Education</option>
                         <option>Experiences</option>
@@ -167,12 +198,16 @@
                 <div class="space-y-1.5">
                     <div class="flex justify-between items-center px-1">
                         <label for="story" class="text-xs font-bold text-gray-700">Tell your story</label>
-                        <button type="button" class="text-[10px] font-bold text-purple-600 bg-purple-50 px-3 py-1 rounded-full flex items-center gap-1">
+                        <button type="button"
+                            class="text-[10px] font-bold text-purple-600 bg-purple-50 px-3 py-1 rounded-full flex items-center gap-1">
                             <i data-lucide="sparkles" class="w-3 h-3"></i>
                             <span>Enhance with AI</span>
                         </button>
                     </div>
-                    <textarea id="story" name="story" placeholder="Introduce yourself and explain why you're raising money..." rows="4" class="w-full bg-white p-4 rounded-2xl border border-gray-100 card-shadow input-focus text-sm font-medium" maxlength="800"></textarea>
+                    <textarea id="story" name="story"
+                        placeholder="Introduce yourself and explain why you're raising money..." rows="4"
+                        class="w-full bg-white p-4 rounded-2xl border border-gray-100 card-shadow input-focus text-sm font-medium"
+                        maxlength="800"></textarea>
                     <div class="text-xs text-gray-400 text-right px-1" id="story-counter">0 / 800</div>
                 </div>
 
@@ -180,7 +215,8 @@
                     <label class="text-xs font-bold text-gray-700 px-1">Funding Goal ($)</label>
                     <div class="relative">
                         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-bold">$</span>
-                        <input type="number" placeholder="100.00" class="w-full bg-white pl-8 p-4 rounded-2xl border border-gray-100 card-shadow input-focus text-sm font-medium">
+                        <input type="number" placeholder="100.00"
+                            class="w-full bg-white pl-8 p-4 rounded-2xl border border-gray-100 card-shadow input-focus text-sm font-medium">
                     </div>
                 </div>
             </section>
@@ -188,8 +224,10 @@
             <!-- Step 3: Visuals -->
             <section class="space-y-4">
                 <p class="text-xs font-bold text-gray-400 uppercase tracking-widest px-1">Step 3: Visuals</p>
-                <div class="w-full aspect-video bg-white border-2 border-dashed border-gray-200 rounded-3xl flex flex-col items-center justify-center gap-3 card-shadow hover:border-purple-300 transition-colors cursor-pointer group">
-                    <div class="w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-400 group-hover:bg-purple-100 transition-colors">
+                <div
+                    class="w-full aspect-video bg-white border-2 border-dashed border-gray-200 rounded-3xl flex flex-col items-center justify-center gap-3 card-shadow hover:border-purple-300 transition-colors cursor-pointer group">
+                    <div
+                        class="w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-400 group-hover:bg-purple-100 transition-colors">
                         <i data-lucide="image-plus" class="w-6 h-6"></i>
                     </div>
                     <div class="text-center px-6">
@@ -203,20 +241,29 @@
             <section class="space-y-6">
                 <div class="flex justify-between items-center px-1">
                     <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">Step 4: Offerings</p>
-                    <button type="button" class="text-[10px] font-bold text-purple-600 bg-purple-50 px-3 py-1 rounded-full">+ Add Offering</button>
+                    <button type="button"
+                        class="text-[10px] font-bold text-purple-600 bg-purple-50 px-3 py-1 rounded-full">+ Add
+                        Offering</button>
                 </div>
 
                 <!-- Offering Card -->
-                <div class="bg-white p-5 rounded-3xl border border-gray-100 card-shadow space-y-4 relative overflow-hidden">
-                    <div class="absolute right-0 top-0 bg-purple-500 text-white text-[8px] font-bold px-3 py-1 rounded-bl-xl uppercase">Primary Offering</div>
-                    
+                <div
+                    class="bg-white p-5 rounded-3xl border border-gray-100 card-shadow space-y-4 relative overflow-hidden">
+                    <div
+                        class="absolute right-0 top-0 bg-purple-500 text-white text-[8px] font-bold px-3 py-1 rounded-bl-xl uppercase">
+                        Primary Offering</div>
+
                     <div class="space-y-1.5">
                         <label class="text-[10px] font-bold text-gray-400 uppercase">Price ($)</label>
-                        <input type="number" value="10.00" class="w-full bg-gray-50/50 p-3 rounded-xl border border-gray-100 input-focus text-sm font-bold">
+                        <input type="number" value="10.00"
+                            class="w-full bg-gray-50/50 p-3 rounded-xl border border-gray-100 input-focus text-sm font-bold">
                     </div>
                     <div class="space-y-1.5">
-                        <label class="text-[10px] font-bold text-gray-400 uppercase tracking-tight">What are you offering?</label>
-                        <textarea placeholder="e.g. A handwritten thank you postcard or a custom LEGO build video." rows="2" class="w-full bg-gray-50/50 p-3 rounded-xl border border-gray-100 input-focus text-xs font-medium"></textarea>
+                        <label class="text-[10px] font-bold text-gray-400 uppercase tracking-tight">What are you
+                            offering?</label>
+                        <textarea placeholder="e.g. A handwritten thank you postcard or a custom LEGO build video."
+                            rows="2"
+                            class="w-full bg-gray-50/50 p-3 rounded-xl border border-gray-100 input-focus text-xs font-medium"></textarea>
                     </div>
                 </div>
             </section>
@@ -226,7 +273,8 @@
                 <p class="text-xs font-bold text-gray-400 uppercase tracking-widest px-1">Step 5: Privacy</p>
                 <div class="space-y-3">
                     <input type="radio" name="visibility" id="private" class="hidden custom-radio" checked>
-                    <label for="private" class="flex items-center gap-4 p-4 bg-white border-2 border-transparent rounded-2xl card-shadow cursor-pointer transition-all">
+                    <label for="private"
+                        class="flex items-center gap-4 p-4 bg-white border-2 border-transparent rounded-2xl card-shadow cursor-pointer transition-all">
                         <div class="radio-circle w-5 h-5 border-2 border-gray-200 rounded-full flex shrink-0"></div>
                         <div>
                             <p class="text-sm font-bold text-gray-900">Private Campaign</p>
@@ -235,7 +283,8 @@
                     </label>
 
                     <input type="radio" name="visibility" id="public" class="hidden custom-radio">
-                    <label for="public" class="flex items-center gap-4 p-4 bg-white border-2 border-transparent rounded-2xl card-shadow cursor-pointer transition-all">
+                    <label for="public"
+                        class="flex items-center gap-4 p-4 bg-white border-2 border-transparent rounded-2xl card-shadow cursor-pointer transition-all">
                         <div class="radio-circle w-5 h-5 border-2 border-gray-200 rounded-full flex shrink-0"></div>
                         <div>
                             <p class="text-sm font-bold text-gray-900">Public Campaign</p>
@@ -253,17 +302,21 @@
                     </div>
                     <div class="space-y-2">
                         <p class="text-sm font-bold text-blue-900">Platform Fees</p>
-                        <p class="text-sm text-blue-800 leading-relaxed">We charge $0 in fees until your child hits $100 in total account earnings. After that, a transparent 10% fee is deducted per transaction to cover platform hosting, payment processing, and ongoing platform operations.</p>
+                        <p class="text-sm text-blue-800 leading-relaxed">We charge $0 in fees until your child hits $100
+                            in total account earnings. After that, a transparent 10% fee is deducted per transaction to
+                            cover platform hosting, payment processing, and ongoing platform operations.</p>
                     </div>
                 </div>
             </section>
 
             <!-- Final Actions -->
             <div class="space-y-3 pt-6">
-                <button type="submit" class="w-full mlv-purple text-white py-4 rounded-2xl font-bold shadow-lg shadow-purple-200 flex items-center justify-center gap-2 btn-press hover:opacity-95">
+                <button type="submit"
+                    class="w-full mlv-purple text-white py-4 rounded-2xl font-bold shadow-lg shadow-purple-200 flex items-center justify-center gap-2 btn-press hover:opacity-95">
                     Send to Guardian for Approval
                 </button>
-                <button type="button" class="w-full bg-white border-2 border-gray-100 text-gray-500 py-4 rounded-2xl font-bold btn-press hover:bg-gray-50">
+                <button type="button"
+                    class="w-full bg-white border-2 border-gray-100 text-gray-500 py-4 rounded-2xl font-bold btn-press hover:bg-gray-50">
                     Save as Draft
                 </button>
             </div>
@@ -277,10 +330,10 @@
         // Menu elements
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        
+
         const profileMenuButton = document.getElementById('profile-menu-button');
         const profileMenu = document.getElementById('profile-menu');
-        
+
         const mobileDashboardMenuButton = document.getElementById('mobile-dashboard-menu-button');
         const mobileDashboardMenu = document.getElementById('mobile-dashboard-menu');
 
@@ -295,7 +348,7 @@
             event.stopPropagation();
             profileMenu.classList.toggle('hidden');
         });
-        
+
         // Toggle mobile dashboard sub-menu
         mobileDashboardMenuButton.addEventListener('click', (event) => {
             event.stopPropagation();
@@ -328,4 +381,5 @@
         });
     </script>
 </body>
+
 </html>
