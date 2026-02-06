@@ -1,37 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up | My Little Venture</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #FFFFFF;
         }
-        .mlv-purple { background-color: #8B5CF6; }
-        .mlv-orange { background-color: #F97316; }
-        .mlv-text-purple { color: #8B5CF6; }
-        .mlv-text-orange { color: #F97316; }
+
+        .mlv-purple {
+            background-color: #8B5CF6;
+        }
+
+        .mlv-orange {
+            background-color: #F97316;
+        }
+
+        .mlv-text-purple {
+            color: #8B5CF6;
+        }
+
+        .mlv-text-orange {
+            color: #F97316;
+        }
+
         .btn-press:active {
             transform: scale(0.96);
         }
+
         .role-card {
             transition: all 0.3s ease;
         }
+
         .role-card:hover {
             transform: translateY(-4px);
         }
+
         .role-card.selected {
             border-color: #8B5CF6;
             background-color: #F3E8FF;
         }
+
         input:focus {
             outline: none;
         }
+
         /* Slide-in animation for form panel */
         .form-panel {
             position: fixed;
@@ -46,9 +66,11 @@
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 40;
         }
+
         .form-panel.active {
             transform: translateX(0);
         }
+
         .form-panel-close {
             position: sticky;
             top: 0;
@@ -59,6 +81,7 @@
             background: white;
             border-bottom: 1px solid #f3f4f6;
         }
+
         @media (max-width: 768px) {
             .form-panel {
                 width: 100%;
@@ -66,17 +89,19 @@
         }
     </style>
 </head>
+
 <body class="text-gray-900">
 
     <!-- Navigation -->
     <nav class="sticky top-0 z-50 px-6 py-4 bg-white border-b border-gray-100">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <a href="/mlv-demo/index.html" class="flex items-center gap-2 shrink-0">
-                <img src="https://uat.mylittleventure.com/images/mlv-logo.svg" alt="My Little Venture" class="h-10 w-auto">
+            <a href="index.html" class="flex items-center gap-2 shrink-0">
+                <img src="https://uat.mylittleventure.com/images/mlv-logo.svg" alt="My Little Venture"
+                    class="h-10 w-auto">
             </a>
             <div class="flex items-center gap-4">
                 <p class="text-sm text-gray-500">Already have an account?</p>
-                <a href="/mlv-demo/signin.html" class="text-sm font-bold mlv-text-purple hover:underline">Sign In</a>
+                <a href="signin.html" class="text-sm font-bold mlv-text-purple hover:underline">Sign In</a>
             </div>
         </div>
     </nav>
@@ -86,14 +111,16 @@
         <div class="text-center mb-12">
             <h1 class="text-4xl sm:text-5xl font-[900] text-gray-900 mb-4 tracking-tight">Let's get started</h1>
             <p class="text-gray-500 font-medium text-lg max-w-2xl mx-auto">
-                Choose the account type that best fits your role so we can create the perfect experience for you on My Little Venture.
+                Choose the account type that best fits your role so we can create the perfect experience for you on My
+                Little Venture.
             </p>
         </div>
 
         <!-- Role Selection Grid (Smaller Cards) -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
             <!-- Kid Creator Card -->
-            <div class="role-card p-6 border-2 border-gray-200 rounded-2xl cursor-pointer transition-all hover:shadow-lg flex flex-col items-start" id="kid-role">
+            <div class="role-card p-6 border-2 border-gray-200 rounded-2xl cursor-pointer transition-all hover:shadow-lg flex flex-col items-start"
+                id="kid-role">
                 <div class="flex items-start gap-3 mb-3">
                     <div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
                         <i data-lucide="sparkles" class="w-5 h-5 mlv-text-purple"></i>
@@ -107,7 +134,8 @@
             </div>
 
             <!-- Parent/Guardian Card -->
-            <div class="role-card p-6 border-2 border-gray-200 rounded-2xl cursor-pointer transition-all hover:shadow-lg flex flex-col items-start" id="guardian-role">
+            <div class="role-card p-6 border-2 border-gray-200 rounded-2xl cursor-pointer transition-all hover:shadow-lg flex flex-col items-start"
+                id="guardian-role">
                 <div class="flex items-start gap-3 mb-3">
                     <div class="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0">
                         <i data-lucide="shield-check" class="w-5 h-5 mlv-text-orange"></i>
@@ -121,7 +149,8 @@
             </div>
 
             <!-- Supporter Card -->
-            <div class="role-card p-6 border-2 border-gray-200 rounded-2xl cursor-pointer transition-all hover:shadow-lg flex flex-col items-start" id="supporter-role">
+            <div class="role-card p-6 border-2 border-gray-200 rounded-2xl cursor-pointer transition-all hover:shadow-lg flex flex-col items-start"
+                id="supporter-role">
                 <div class="flex items-start gap-3 mb-3">
                     <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
                         <i data-lucide="heart" class="w-5 h-5 text-green-600"></i>
@@ -140,17 +169,18 @@
     <div class="form-panel" id="form-panel">
         <div class="form-panel-close">
             <!-- Back link for mobile -->
-            <button type="button" id="back-panel" class="flex items-center gap-2 p-2 text-gray-500 hover:text-gray-700 md:hidden">
+            <button type="button" id="back-panel"
+                class="flex items-center gap-2 p-2 text-gray-500 hover:text-gray-700 md:hidden">
                 <i data-lucide="arrow-left" class="w-5 h-5"></i>
                 <span class="font-medium">Back</span>
             </button>
-            
+
             <!-- Close button -->
             <button type="button" id="close-panel" class="p-2 text-gray-400 hover:text-gray-600">
                 <i data-lucide="x" class="w-6 h-6"></i>
             </button>
         </div>
-        
+
         <div class="px-6 pb-8">
             <form class="space-y-6" id="signup-form">
                 <!-- KID ROLE FORM -->
@@ -162,16 +192,9 @@
                             <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                                 <i data-lucide="calendar" class="w-5 h-5"></i>
                             </div>
-                            <input 
-                                type="number" 
-                                id="age" 
-                                name="age" 
-                                placeholder="Enter your age" 
-                                min="1"
-                                max="120"
+                            <input type="number" id="age" name="age" placeholder="Enter your age" min="1" max="120"
                                 class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                                required
-                            >
+                                required>
                         </div>
                     </div>
 
@@ -183,7 +206,9 @@
                             </div>
                             <div>
                                 <p class="text-sm font-bold text-orange-900 mb-1">Age Requirement</p>
-                                <p class="text-sm text-orange-800">For kids under 13, please ask your guardian/parent to launch campaigns on your behalf. They can set up an account as a Parent/Guardian and create campaigns for you.</p>
+                                <p class="text-sm text-orange-800">For kids under 13, please ask your guardian/parent to
+                                    launch campaigns on your behalf. They can set up an account as a Parent/Guardian and
+                                    create campaigns for you.</p>
                             </div>
                         </div>
                     </div>
@@ -196,7 +221,10 @@
                             </div>
                             <div>
                                 <p class="text-sm font-bold text-blue-900 mb-1">Account Type Selection</p>
-                                <p class="text-sm text-blue-800">Age 18 or older? Please sign up as a <span class="font-bold">Parent/Guardian</span> or <span class="font-bold">Supporter</span> instead. Those account types are better suited for your age group.</p>
+                                <p class="text-sm text-blue-800">Age 18 or older? Please sign up as a <span
+                                        class="font-bold">Parent/Guardian</span> or <span
+                                        class="font-bold">Supporter</span> instead. Those account types are better
+                                    suited for your age group.</p>
                             </div>
                         </div>
                     </div>
@@ -210,14 +238,9 @@
                                 <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                                     <i data-lucide="user" class="w-5 h-5"></i>
                                 </div>
-                                <input 
-                                    type="text" 
-                                    id="nickname" 
-                                    name="nickname" 
-                                    placeholder="What should we call you?" 
+                                <input type="text" id="nickname" name="nickname" placeholder="What should we call you?"
                                     class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                                    required
-                                >
+                                    required>
                             </div>
                         </div>
 
@@ -228,14 +251,9 @@
                                 <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                                     <i data-lucide="mail" class="w-5 h-5"></i>
                                 </div>
-                                <input 
-                                    type="email" 
-                                    id="kid-email" 
-                                    name="email" 
-                                    placeholder="you@example.com" 
+                                <input type="email" id="kid-email" name="email" placeholder="you@example.com"
                                     class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                                    required
-                                >
+                                    required>
                             </div>
                         </div>
 
@@ -246,32 +264,25 @@
                                 <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                                     <i data-lucide="lock" class="w-5 h-5"></i>
                                 </div>
-                                <input 
-                                    type="password" 
-                                    id="kid-password" 
-                                    name="password" 
-                                    placeholder="Create a strong password" 
+                                <input type="password" id="kid-password" name="password"
+                                    placeholder="Create a strong password"
                                     class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                                    required
-                                >
+                                    required>
                             </div>
                         </div>
 
                         <!-- Confirm Password Field -->
                         <div class="space-y-2">
-                            <label for="kid-confirm-password" class="text-sm font-bold text-gray-700 block">Confirm Password</label>
+                            <label for="kid-confirm-password" class="text-sm font-bold text-gray-700 block">Confirm
+                                Password</label>
                             <div class="relative">
                                 <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                                     <i data-lucide="lock" class="w-5 h-5"></i>
                                 </div>
-                                <input 
-                                    type="password" 
-                                    id="kid-confirm-password" 
-                                    name="confirm-password" 
-                                    placeholder="Confirm your password" 
+                                <input type="password" id="kid-confirm-password" name="confirm-password"
+                                    placeholder="Confirm your password"
                                     class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                                    required
-                                >
+                                    required>
                             </div>
                         </div>
                     </div>
@@ -286,14 +297,9 @@
                             <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                                 <i data-lucide="user" class="w-5 h-5"></i>
                             </div>
-                            <input 
-                                type="text" 
-                                id="first-name" 
-                                name="first-name" 
-                                placeholder="Your first name" 
+                            <input type="text" id="first-name" name="first-name" placeholder="Your first name"
                                 class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                                required
-                            >
+                                required>
                         </div>
                     </div>
 
@@ -304,14 +310,9 @@
                             <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                                 <i data-lucide="user" class="w-5 h-5"></i>
                             </div>
-                            <input 
-                                type="text" 
-                                id="last-name" 
-                                name="last-name" 
-                                placeholder="Your last name" 
+                            <input type="text" id="last-name" name="last-name" placeholder="Your last name"
                                 class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                                required
-                            >
+                                required>
                         </div>
                     </div>
 
@@ -322,14 +323,9 @@
                             <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                                 <i data-lucide="mail" class="w-5 h-5"></i>
                             </div>
-                            <input 
-                                type="email" 
-                                id="guardian-email" 
-                                name="email" 
-                                placeholder="you@example.com" 
+                            <input type="email" id="guardian-email" name="email" placeholder="you@example.com"
                                 class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                                required
-                            >
+                                required>
                         </div>
                     </div>
 
@@ -340,32 +336,25 @@
                             <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                                 <i data-lucide="lock" class="w-5 h-5"></i>
                             </div>
-                            <input 
-                                type="password" 
-                                id="guardian-password" 
-                                name="password" 
-                                placeholder="Create a strong password" 
+                            <input type="password" id="guardian-password" name="password"
+                                placeholder="Create a strong password"
                                 class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                                required
-                            >
+                                required>
                         </div>
                     </div>
 
                     <!-- Confirm Password Field -->
                     <div class="space-y-2">
-                        <label for="guardian-confirm-password" class="text-sm font-bold text-gray-700 block">Confirm Password</label>
+                        <label for="guardian-confirm-password" class="text-sm font-bold text-gray-700 block">Confirm
+                            Password</label>
                         <div class="relative">
                             <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                                 <i data-lucide="lock" class="w-5 h-5"></i>
                             </div>
-                            <input 
-                                type="password" 
-                                id="guardian-confirm-password" 
-                                name="confirm-password" 
-                                placeholder="Confirm your password" 
+                            <input type="password" id="guardian-confirm-password" name="confirm-password"
+                                placeholder="Confirm your password"
                                 class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                                required
-                            >
+                                required>
                         </div>
                     </div>
                 </div>
@@ -374,19 +363,15 @@
                 <div id="supporter-form" class="hidden space-y-6">
                     <!-- First Name Field -->
                     <div class="space-y-2">
-                        <label for="supporter-first-name" class="text-sm font-bold text-gray-700 block">First Name</label>
+                        <label for="supporter-first-name" class="text-sm font-bold text-gray-700 block">First
+                            Name</label>
                         <div class="relative">
                             <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                                 <i data-lucide="user" class="w-5 h-5"></i>
                             </div>
-                            <input 
-                                type="text" 
-                                id="supporter-first-name" 
-                                name="first-name" 
-                                placeholder="Your first name" 
+                            <input type="text" id="supporter-first-name" name="first-name" placeholder="Your first name"
                                 class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                                required
-                            >
+                                required>
                         </div>
                     </div>
 
@@ -397,14 +382,9 @@
                             <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                                 <i data-lucide="user" class="w-5 h-5"></i>
                             </div>
-                            <input 
-                                type="text" 
-                                id="supporter-last-name" 
-                                name="last-name" 
-                                placeholder="Your last name" 
+                            <input type="text" id="supporter-last-name" name="last-name" placeholder="Your last name"
                                 class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                                required
-                            >
+                                required>
                         </div>
                     </div>
 
@@ -415,14 +395,9 @@
                             <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                                 <i data-lucide="mail" class="w-5 h-5"></i>
                             </div>
-                            <input 
-                                type="email" 
-                                id="supporter-email" 
-                                name="email" 
-                                placeholder="you@example.com" 
+                            <input type="email" id="supporter-email" name="email" placeholder="you@example.com"
                                 class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                                required
-                            >
+                                required>
                         </div>
                     </div>
 
@@ -433,32 +408,25 @@
                             <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                                 <i data-lucide="lock" class="w-5 h-5"></i>
                             </div>
-                            <input 
-                                type="password" 
-                                id="supporter-password" 
-                                name="password" 
-                                placeholder="Create a strong password" 
+                            <input type="password" id="supporter-password" name="password"
+                                placeholder="Create a strong password"
                                 class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                                required
-                            >
+                                required>
                         </div>
                     </div>
 
                     <!-- Confirm Password Field -->
                     <div class="space-y-2">
-                        <label for="supporter-confirm-password" class="text-sm font-bold text-gray-700 block">Confirm Password</label>
+                        <label for="supporter-confirm-password" class="text-sm font-bold text-gray-700 block">Confirm
+                            Password</label>
                         <div class="relative">
                             <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                                 <i data-lucide="lock" class="w-5 h-5"></i>
                             </div>
-                            <input 
-                                type="password" 
-                                id="supporter-confirm-password" 
-                                name="confirm-password" 
-                                placeholder="Confirm your password" 
+                            <input type="password" id="supporter-confirm-password" name="confirm-password"
+                                placeholder="Confirm your password"
                                 class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                                required
-                            >
+                                required>
                         </div>
                     </div>
                 </div>
@@ -467,23 +435,18 @@
                 <div id="otp-section" class="hidden space-y-6">
                     <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6">
                         <h3 class="text-lg font-bold text-blue-900 mb-2">Verify Your Email</h3>
-                        <p class="text-sm text-blue-800 mb-4">We've sent a verification code to your email. Enter it below to complete your signup.</p>
-                        
+                        <p class="text-sm text-blue-800 mb-4">We've sent a verification code to your email. Enter it
+                            below to complete your signup.</p>
+
                         <div class="space-y-2">
                             <label for="otp" class="text-sm font-bold text-gray-700 block">Verification Code</label>
                             <div class="relative">
                                 <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                                     <i data-lucide="key" class="w-5 h-5"></i>
                                 </div>
-                                <input 
-                                    type="text" 
-                                    id="otp" 
-                                    name="otp" 
-                                    placeholder="Enter 6-digit code" 
-                                    maxlength="6"
+                                <input type="text" id="otp" name="otp" placeholder="Enter 6-digit code" maxlength="6"
                                     class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-center text-2xl tracking-widest"
-                                    required
-                                >
+                                    required>
                             </div>
                         </div>
 
@@ -495,24 +458,19 @@
 
                 <!-- Terms Checkbox (Hidden until age verified) -->
                 <div id="terms-section" class="hidden flex items-start gap-3 py-4">
-                    <input 
-                        type="checkbox" 
-                        id="terms" 
-                        name="terms" 
+                    <input type="checkbox" id="terms" name="terms"
                         class="mt-1 w-4 h-4 rounded border-gray-300 mlv-purple focus:ring-2 focus:ring-purple-500"
-                        required
-                    >
+                        required>
                     <label for="terms" class="text-sm text-gray-600">
-                        I agree to the <a href="#" class="mlv-text-purple font-bold hover:underline">Terms of Service</a> and <a href="#" class="mlv-text-purple font-bold hover:underline">Privacy Policy</a>
+                        I agree to the <a href="#" class="mlv-text-purple font-bold hover:underline">Terms of
+                            Service</a> and <a href="#" class="mlv-text-purple font-bold hover:underline">Privacy
+                            Policy</a>
                     </label>
                 </div>
 
                 <!-- Submit Button -->
-                <button 
-                    type="submit" 
-                    id="submit-btn"
-                    class="w-full mlv-purple text-white py-3 rounded-2xl font-bold text-lg btn-press shadow-lg shadow-purple-200 hover:opacity-95 transition-opacity flex items-center justify-center gap-2 mt-8 hidden"
-                >
+                <button type="submit" id="submit-btn"
+                    class="w-full mlv-purple text-white py-3 rounded-2xl font-bold text-lg btn-press shadow-lg shadow-purple-200 hover:opacity-95 transition-opacity flex items-center justify-center gap-2 mt-8 hidden">
                     Create Account
                     <i data-lucide="arrow-right" class="w-5 h-5"></i>
                 </button>
@@ -520,8 +478,8 @@
                 <!-- Sign In Link -->
                 <div class="text-center">
                     <p class="text-gray-500 font-medium">
-                        Already have an account? 
-                        <a href="/mlv-demo/signin.html" class="mlv-text-purple font-bold hover:underline">Sign In</a>
+                        Already have an account?
+                        <a href="signin.html" class="mlv-text-purple font-bold hover:underline">Sign In</a>
                     </p>
                 </div>
             </form>
@@ -577,11 +535,11 @@
             guardianRadio.checked = false;
             supporterRadio.checked = false;
             radio.checked = true;
-            
+
             kidRole.classList.remove('selected');
             guardianRole.classList.remove('selected');
             supporterRole.classList.remove('selected');
-            
+
             kidForm.classList.add('hidden');
             guardianForm.classList.add('hidden');
             supporterForm.classList.add('hidden');
@@ -589,7 +547,7 @@
             submitBtn.classList.add('hidden');
             age13PlusForm.classList.add('hidden');
             under13Warning.classList.add('hidden');
-            
+
             if (role === 'kid') {
                 kidRole.classList.add('selected');
                 kidForm.classList.remove('hidden');
@@ -605,7 +563,7 @@
                 termsSection.classList.remove('hidden');
                 submitBtn.classList.remove('hidden');
             }
-            
+
             // Slide in the form panel
             formPanel.classList.add('active');
         }
@@ -625,7 +583,7 @@
             const age = parseInt(ageInput.value);
             const under13Warning = document.getElementById('under-13-warning');
             const age18PlusWarning = document.getElementById('age-18-plus-warning');
-            
+
             if (age < 13) {
                 under13Warning.classList.remove('hidden');
                 age18PlusWarning.classList.add('hidden');
@@ -650,31 +608,37 @@
         // Form submission
         signupForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             let role = 'guardian';
             if (kidRadio.checked) role = 'kid';
             else if (supporterRadio.checked) role = 'supporter';
-            
+
             // For kids under 13, don't proceed
             if (role === 'kid' && parseInt(ageInput.value) < 13) {
                 return;
             }
-            
+
             // Show OTP section
             const otpSection = document.getElementById('otp-section');
             const formFields = signupForm.querySelector('div:not(#otp-section)');
-            
+
             // Hide all form fields except OTP
             kidForm.classList.add('hidden');
             guardianForm.classList.add('hidden');
             supporterForm.classList.add('hidden');
             termsSection.classList.add('hidden');
             submitBtn.classList.add('hidden');
-            
+
             otpSection.classList.remove('hidden');
             otpSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Simulate OTP verification and redirect
+            setTimeout(() => {
+                window.location.href = 'demo-role-select.html';
+            }, 1000);
         });
     </script>
 
 </body>
+
 </html>
