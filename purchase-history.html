@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase History | My Little Venture</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F8F9FC;
+        }
+        .mlv-purple { background-color: #8B5CF6; }
+        .mlv-orange { background-color: #F97316; }
+        .mlv-text-purple { color: #8B5CF6; }
+        .btn-press:active {
+            transform: scale(0.98);
+        }
+        .card-shadow {
+            box-shadow: 0 4px 24px -2px rgba(139, 92, 246, 0.08);
+        }
+    </style>
+</head>
+<body class="pb-28">
+
+    <!-- Header -->
+    <header class="bg-white px-6 py-4 flex justify-between items-center sticky top-0 z-50 border-b border-gray-100">
+        <div class="flex items-center gap-2">
+            <a href="index.html" class="flex items-center gap-2 shrink-0">
+                <img src="https://uat.mylittleventure.com/images/mlv-logo.svg" alt="My Little Venture" class="h-8 w-auto">
+            </a>
+            <span class="text-gray-400">/</span>
+            <h1 class="text-lg font-bold text-gray-900">Purchase History</h1>
+        </div>
+        <div>
+            <button class="relative text-gray-500 hover:text-purple-600 transition-colors p-1">
+                <i data-lucide="shopping-cart" class="w-6 h-6"></i>
+                <span class="absolute top-0 right-0 w-2 h-2 bg-orange-500 rounded-full border border-white"></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="px-4 sm:px-6 lg:px-8 py-8 max-w-5xl mx-auto">
+        <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-8">Your Purchase History</h1>
+
+        <div class="space-y-8">
+            <!-- Past Purchase 1 -->
+            <div class="bg-white rounded-[2.5rem] p-6 card-shadow border border-gray-100">
+                <div class="flex justify-between items-center mb-4 pb-4 border-b border-gray-100">
+                    <div>
+                        <p class="text-sm font-bold text-gray-900">Order #MLV-20231026-001</p>
+                        <p class="text-xs text-gray-500">Purchased on October 26, 2023</p>
+                    </div>
+                    <p class="font-bold mlv-text-purple text-lg">$75.00</p>
+                </div>
+                
+                <div class="space-y-6 mb-4">
+                    <!-- Campaign Group: Visiting Legoland Campaign -->
+                    <div class="rounded-xl border border-gray-100 p-4">
+                        <div class="flex items-center gap-3 mb-3">
+                            <img src="https://images.unsplash.com/photo-1513384312027-9fa69a360337?q=80&w=50&auto=format&fit=crop" class="w-10 h-10 rounded-lg object-cover" alt="Campaign Legoland">
+                            <p class="font-bold text-gray-900 text-sm">Visiting Legoland Campaign</p>
+                        </div>
+                        <div class="space-y-2 pl-4">
+                            <!-- Item 1 for Campaign 1 -->
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="font-bold text-gray-800">Custom Lego Art Piece</p>
+                                    <p class="text-xs text-gray-500">Qty: 1 x $25.00</p>
+                                </div>
+                                <p class="font-bold text-gray-700 text-sm">$25.00</p>
+                            </div>
+                            <!-- Item 2 for Campaign 1 -->
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="font-bold text-gray-800">Handmade Lego Keychain</p>
+                                    <p class="text-xs text-gray-500">Qty: 2 x $10.00</p>
+                                </div>
+                                <p class="font-bold text-gray-700 text-sm">$20.00</p>
+                            </div>
+                            <!-- Cash Gift for Campaign 1 -->
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="font-bold text-gray-800">Cash Gift</p>
+                                    <p class="text-xs text-gray-500">to Visiting Legoland Campaign</p>
+                                </div>
+                                <p class="font-bold text-gray-700 text-sm">$10.00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="mlv-text-purple text-sm font-bold hover:underline flex items-center justify-end gap-1">
+                    View Order Details
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- Past Purchase 2 -->
+            <div class="bg-white rounded-[2.5rem] p-6 card-shadow border border-gray-100">
+                <div class="flex justify-between items-center mb-4 pb-4 border-b border-gray-100">
+                    <div>
+                        <p class="text-sm font-bold text-gray-900">Order #MLV-20230915-002</p>
+                        <p class="text-xs text-gray-500">Purchased on September 15, 2023</p>
+                    </div>
+                    <p class="font-bold mlv-text-purple text-lg">$30.00</p>
+                </div>
+                
+                <div class="space-y-6 mb-4">
+                    <!-- Campaign Group: School Supplies Fund -->
+                    <div class="rounded-xl border border-gray-100 p-4">
+                        <div class="flex items-center gap-3 mb-3">
+                            <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?q=80&w=50&auto=format&fit=crop" class="w-10 h-10 rounded-lg object-cover" alt="Campaign School Supplies">
+                            <p class="font-bold text-gray-900 text-sm">School Supplies Fund</p>
+                        </div>
+                        <div class="space-y-2 pl-4">
+                            <!-- Item 1 for Purchase 2 -->
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="font-bold text-gray-800">Custom Pencil Case</p>
+                                    <p class="text-xs text-gray-500">Qty: 1 x $15.00</p>
+                                </div>
+                                <p class="font-bold text-gray-700 text-sm">$15.00</p>
+                            </div>
+                            <!-- Cash Gift for Purchase 2 -->
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="font-bold text-gray-800">Cash Gift</p>
+                                    <p class="text-xs text-gray-500">to School Supplies Fund</p>
+                                </div>
+                                <p class="font-bold text-gray-700 text-sm">$10.00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="mlv-text-purple text-sm font-bold hover:underline flex items-center justify-end gap-1">
+                    View Order Details
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
